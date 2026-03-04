@@ -331,6 +331,23 @@ const faqs = [
   { q: '做出的产品可以商用吗？', a: '<strong>完全可以</strong>。AI 帮你写代码，代码的所有权归你。很多创业者用 AI 编程做出了商用产品。需要注意的是：使用的开源组件要遵守其许可证，API 调用要注意付费额度，用户数据要做好隐私保护。' },
 ]
 
+const techTagColors = ['var(--amber)', 'var(--teal)', 'var(--sky)', 'var(--coral)', 'var(--lavender)', 'var(--rose)']
+
+function TechTag({ name, index }: { name: string; index: number }) {
+  const color = techTagColors[index % techTagColors.length]
+  return (
+    <a
+      href={`https://www.google.com/search?q=${encodeURIComponent(name)}`}
+      target="_blank"
+      rel="noreferrer"
+      className="tech-tag-link"
+      style={{ color, borderColor: color }}
+    >
+      {name}
+    </a>
+  )
+}
+
 const pageLinks = [
   { path: '/advanced', icon: '🚀', title: 'AI 编程进阶', desc: '掌握高级技巧，成为 AI 编程高手', color: 'var(--teal)' },
   { path: '/mcp', icon: '🔌', title: 'MCP 协议指南', desc: '了解模型上下文协议，连接更多工具', color: 'var(--sky)' },
@@ -397,12 +414,8 @@ interface DemoMessage {
 export default function HomePage() {
   const navigate = useNavigate()
 
-  // Concepts expand
-  const [expandedConcept, setExpandedConcept] = useState<number | null>(null)
-
   // Roadmap mode
   const [roadmapMode, setRoadmapMode] = useState<'simple' | 'detail'>('simple')
-  const [expandedSteps, setExpandedSteps] = useState<Set<number>>(new Set())
 
   // Demo messages
   const [demoMessages, setDemoMessages] = useState<DemoMessage[]>([
@@ -412,7 +425,7 @@ export default function HomePage() {
   const messagesEndRef = useRef<HTMLDivElement>(null)
 
   // FAQ
-  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null)
+  const [openFaqs, setOpenFaqs] = useState<Set<number>>(new Set())
   const faqRefs = useRef<(HTMLDivElement | null)[]>([])
 
   // Scroll reveal
@@ -437,10 +450,8 @@ export default function HomePage() {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
   }, [demoMessages])
 
-  // Reset expanded steps on mode change
-  useEffect(() => {
-    setExpandedSteps(new Set())
-  }, [roadmapMode])
+  // Reset expanded steps on mode change (noop kept for compatibility)
+  useEffect(() => {}, [roadmapMode])
 
   const sendDemo = useCallback(() => {
     const text = demoInput.trim()
@@ -499,11 +510,11 @@ export default function HomePage() {
     }, 0)
   }
 
-  const toggleStep = (idx: number) => {
-    setExpandedSteps(prev => {
+  const toggleFaq = (i: number) => {
+    setOpenFaqs(prev => {
       const next = new Set(prev)
-      if (next.has(idx)) next.delete(idx)
-      else next.add(idx)
+      if (next.has(i)) next.delete(i)
+      else next.add(i)
       return next
     })
   }
@@ -577,8 +588,7 @@ export default function HomePage() {
           {concepts.map((c, i) => (
             <div
               key={i}
-              className={`card concept-card reveal ${i < 4 ? `reveal-delay-${(i % 4) + 1}` : ''} ${expandedConcept === i ? 'expanded' : ''}`}
-              onClick={() => setExpandedConcept(expandedConcept === i ? null : i)}
+              className={`card concept-card expanded reveal ${i < 4 ? `reveal-delay-${(i % 4) + 1}` : ''}`}
             >
               <div className="concept-icon">{c.icon}</div>
               <h3>{c.name} <span className="en">{c.en}</span></h3>
@@ -615,15 +625,13 @@ export default function HomePage() {
               <div
                 key={`${roadmapMode}-${i}`}
                 className="roadmap-step reveal"
-                style={s.detail ? { cursor: 'pointer' } : undefined}
-                onClick={() => s.detail && toggleStep(i)}
               >
                 <div className="step-dot" style={{ borderColor: stepDotColors[i % 7] }}></div>
                 <div className="step-num">{s.num}</div>
                 <h3>{s.title}</h3>
                 <p>{s.desc}</p>
                 {s.detail && (
-                  <div className={`step-detail ${expandedSteps.has(i) ? 'show' : ''}`}>
+                  <div className="step-detail show">
                     <div className="step-detail-inner" dangerouslySetInnerHTML={{ __html: s.detail }} />
                   </div>
                 )}
@@ -653,7 +661,7 @@ export default function HomePage() {
               </div>
               <p>{p.desc}</p>
               <div className="tech-stack">
-                {p.stack.map((t, ti) => <span key={ti}>{t}</span>)}
+                {p.stack.map((t, ti) => <TechTag key={ti} name={t} index={ti} />)}
               </div>
             </div>
           ))}
@@ -730,13 +738,13 @@ export default function HomePage() {
             <div
               key={i}
               ref={el => { faqRefs.current[i] = el }}
-              className={`faq-item reveal ${openFaqIndex === i ? 'open' : ''}`}
+              className={`faq-item reveal ${openFaqs.has(i) ? 'open' : ''}`}
             >
-              <div className="faq-q" onClick={() => setOpenFaqIndex(openFaqIndex === i ? null : i)}>
+              <div className="faq-q" onClick={() => toggleFaq(i)}>
                 <span>{f.q}</span>
                 <span className="arrow">▾</span>
               </div>
-              <div className="faq-a" style={{ maxHeight: openFaqIndex === i ? '500px' : '0' }}>
+              <div className="faq-a" style={{ maxHeight: openFaqs.has(i) ? '500px' : '0' }}>
                 <div className="faq-a-inner" dangerouslySetInnerHTML={{ __html: f.a }} />
               </div>
             </div>
@@ -747,22 +755,29 @@ export default function HomePage() {
       {/* ======= PAGES NAV ======= */}
       <section className="section" id="pages">
         <div className="section-label reveal">08 · 深入</div>
-        <h2 className="section-title reveal">继续探索</h2>
+        <h2 className="section-title reveal">深入学习</h2>
         <p className="section-desc reveal">
-          准备好深入学习了吗？选择你感兴趣的方向继续前进。
+          选择你感兴趣的方向，进入对应的详细指南。
         </p>
-        <div className="pages-grid">
-          {pageLinks.map((p, i) => (
-            <div
-              key={i}
-              className={`page-nav-card reveal ${i < 4 ? `reveal-delay-${(i % 4) + 1}` : ''}`}
-              onClick={() => navigate(p.path)}
-            >
-              <div className="page-icon">{p.icon}</div>
-              <h3>{p.title}</h3>
-              <p>{p.desc}</p>
-            </div>
-          ))}
+        <div className="dir-tree reveal">
+          <div className="dir-root">
+            <span className="dir-icon">📁</span>
+            <span className="dir-name">指南</span>
+          </div>
+          <div className="dir-children">
+            {pageLinks.map((p, i) => (
+              <div
+                key={i}
+                className="dir-item"
+                onClick={() => navigate(p.path)}
+              >
+                <span className="dir-connector">├─</span>
+                <span className="dir-file-icon">{p.icon}</span>
+                <span className="dir-item-title" style={{ color: p.color }}>{p.title}</span>
+                <span className="dir-item-desc">{p.desc}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 

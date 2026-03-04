@@ -70,7 +70,7 @@
 
 .terminal-page .section-label {
   font-family: var(--font-m);
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 500;
   color: var(--green);
   letter-spacing: 0.15em;
@@ -160,7 +160,7 @@
   padding: 6px 14px;
   margin-bottom: 24px;
   font-family: var(--font-m);
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 500;
   color: var(--green);
   letter-spacing: 0.06em;
@@ -254,24 +254,28 @@
 
 .terminal-page .hero-stats {
   display: flex;
-  gap: 32px;
+  gap: 40px;
   margin-top: 48px;
   padding-top: 32px;
   border-top: 1px solid var(--border);
+  flex-wrap: wrap;
 }
 
 .terminal-page .hero-stat-num {
   font-family: var(--font-d);
-  font-size: 28px;
+  font-size: clamp(2.2rem, 4vw, 3rem);
   font-weight: 800;
-  color: var(--t1);
+  color: var(--green);
   letter-spacing: -0.04em;
+  line-height: 1;
+  display: block;
 }
 
 .terminal-page .hero-stat-label {
-  font-size: 12px;
+  font-size: 13px;
   color: var(--t3);
-  margin-top: 2px;
+  margin-top: 6px;
+  letter-spacing: 0.02em;
 }
 
 /* ============ TERMINAL WINDOW ============ */
@@ -300,7 +304,7 @@
 
 .terminal-page .term-title {
   font-family: var(--font-m);
-  font-size: 12px;
+  font-size: 13px;
   color: var(--t3);
   margin: 0 auto;
   padding-right: 52px;
@@ -467,7 +471,7 @@
 
 .terminal-page .path-tag {
   font-family: var(--font-m);
-  font-size: 10px;
+  font-size: 13px;
   font-weight: 500;
   padding: 3px 8px;
   border-radius: 3px;
@@ -488,7 +492,7 @@
 }
 
 .terminal-page .path-step p {
-  font-size: 12px;
+  font-size: 13px;
   color: var(--t3);
   line-height: 1.5;
 }
@@ -501,7 +505,7 @@
 }
 
 .terminal-page .path-item {
-  font-size: 11px;
+  font-size: 13px;
   color: var(--t2);
   display: flex;
   align-items: center;
@@ -511,7 +515,7 @@
 .terminal-page .path-item::before {
   content: '▸';
   color: var(--t3);
-  font-size: 9px;
+  font-size: 11px;
 }
 
 /* ============ MODULES ============ */
@@ -526,7 +530,7 @@
 
 .terminal-page .module-num {
   font-family: var(--font-m);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 700;
   color: var(--t3);
   padding: 6px 12px;
@@ -570,7 +574,7 @@
 
 .terminal-page .cmd-title {
   font-family: var(--font-m);
-  font-size: 12px;
+  font-size: 13px;
   color: var(--t3);
   margin: 0 auto;
   padding-right: 40px;
@@ -604,11 +608,11 @@
   border-radius: 6px;
   padding: 10px 14px;
   font-family: var(--font-m);
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .terminal-page .cmd-ex-line { color: var(--t1); margin-bottom: 2px; }
-.terminal-page .cmd-ex-comment { color: var(--t3); font-size: 11px; }
+.terminal-page .cmd-ex-comment { color: var(--t3); font-size: 13px; }
 .terminal-page .cmd-prompt { color: var(--green); }
 
 /* ============ TIPS & WARNINGS ============ */
@@ -640,7 +644,7 @@
 
 .terminal-page .inline-code {
   font-family: var(--font-m);
-  font-size: 12px;
+  font-size: 13px;
   background: var(--bg-e);
   border: 1px solid var(--border);
   padding: 2px 7px;
@@ -650,7 +654,7 @@
 
 .terminal-page .term-tag {
   font-family: var(--font-m);
-  font-size: 10px;
+  font-size: 13px;
   font-weight: 500;
   padding: 2px 8px;
   border-radius: 3px;
@@ -740,7 +744,7 @@
   border-radius: 6px;
   padding: 12px 14px;
   font-family: var(--font-m);
-  font-size: 12px;
+  font-size: 13px;
   line-height: 1.8;
 }
 
@@ -826,7 +830,7 @@
 
 .terminal-page .ai-badge {
   font-family: var(--font-m);
-  font-size: 10px;
+  font-size: 13px;
   font-weight: 500;
   padding: 3px 10px;
   border-radius: 3px;
@@ -880,7 +884,7 @@
 
 .terminal-page .cheat-table td {
   padding: 10px 20px;
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .terminal-page .cheat-table td:first-child {

@@ -117,7 +117,7 @@
 }
 .roadmap-step:hover{background:var(--bg-card-hover);border-color:rgba(255,255,255,.15)}
 .roadmap-step .step-dot{
-  position:absolute;left:-3rem;top:1.8rem;
+  position:absolute;left:-3.04rem;top:1.8rem;
   width:14px;height:14px;border-radius:50%;
   border:3px solid var(--amber);background:var(--bg-deep);
   transform:translateX(calc(-50% + 15px));
@@ -169,12 +169,17 @@
 .product-card .difficulty .star.empty{opacity:.2}
 .product-card p{color:var(--text-secondary);font-size:.9rem;line-height:1.6}
 .product-card .tech-stack{
-  display:flex;flex-wrap:wrap;gap:.3rem;justify-content:center;margin-top:1rem;
+  display:flex;flex-wrap:wrap;gap:.4rem;justify-content:center;margin-top:1rem;
 }
-.product-card .tech-stack span{
-  padding:.15rem .6rem;border-radius:50px;font-size:.7rem;
-  background:var(--glass);border:1px solid var(--glass-border);
-  color:var(--text-dim);
+.tech-tag-link{
+  padding:.2rem .7rem;border-radius:50px;font-size:.72rem;
+  background:transparent;border:1px solid;
+  font-weight:600;transition:all .2s;text-decoration:none;
+  cursor:pointer;
+}
+.tech-tag-link:hover{
+  opacity:0.8;transform:translateY(-1px);
+  box-shadow:0 2px 8px rgba(0,0,0,0.3);
 }
 
 /* ============ INTERACTIVE DEMO ============ */
@@ -309,6 +314,43 @@
 .page-nav-card .page-icon{font-size:2.5rem;margin-bottom:1rem}
 .page-nav-card h3{font-family:var(--font-display);font-size:1.15rem;font-weight:700;margin-bottom:.4rem}
 .page-nav-card p{color:var(--text-secondary);font-size:.85rem;line-height:1.5}
+
+/* ============ DIRECTORY TREE ============ */
+.dir-tree{
+  background:var(--bg-card);border:1px solid var(--glass-border);
+  border-radius:var(--radius);padding:2rem 2.5rem;
+  font-family:var(--font-mono);
+}
+.dir-root{
+  display:flex;align-items:center;gap:.6rem;
+  font-size:1.05rem;font-weight:700;color:var(--text-primary);
+  margin-bottom:.8rem;
+}
+.dir-icon{font-size:1.3rem}
+.dir-name{font-family:var(--font-display);font-size:1.1rem}
+.dir-children{
+  padding-left:1.5rem;
+  border-left:2px solid var(--glass-border);
+  display:flex;flex-direction:column;gap:.5rem;
+}
+.dir-item{
+  display:flex;align-items:center;gap:.6rem;
+  padding:.7rem 1rem;border-radius:8px;
+  cursor:pointer;transition:all .2s;
+  border:1px solid transparent;
+}
+.dir-item:hover{
+  background:var(--glass);border-color:var(--glass-border);
+}
+.dir-connector{color:var(--text-dim);font-size:.85rem;flex-shrink:0}
+.dir-file-icon{font-size:1.1rem;flex-shrink:0}
+.dir-item-title{
+  font-family:var(--font-display);font-weight:700;font-size:1rem;
+  flex-shrink:0;min-width:140px;
+}
+.dir-item-desc{
+  color:var(--text-dim);font-size:.82rem;font-family:var(--font-body);
+}
 
 /* ============ FOOTER ============ */
 .home-footer{

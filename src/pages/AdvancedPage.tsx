@@ -11,7 +11,7 @@ const sidebarConfig: SidebarConfig = {
       title: 'Agent 深度配置',
       items: [
         { id: 'claude', label: 'Claude Code' },
-        { id: 'copilot', label: 'GitHub Copilot' },
+        { id: 'copilot', label: 'GitHub Copilot CLI' },
         { id: 'cursor', label: 'Cursor' },
       ],
     },
@@ -84,39 +84,69 @@ export default function AdvancedPage() {
         </div>
       </section>
 
-      {/* GITHUB COPILOT */}
+      {/* GITHUB COPILOT CLI */}
       <section id="copilot" className="section">
-        <h2><span className="icon">✈️</span> GitHub Copilot</h2>
-        <p>深度集成 VS Code 的 AI 助手。不仅是补全，更是你的结对编程伙伴。</p>
+        <h2><span className="icon">✈️</span> GitHub Copilot CLI</h2>
+        <p>GitHub 官方出品的命令行 AI 助手，让你用自然语言在终端中操作 Git、执行命令、解释代码。</p>
 
         <div className="agent-detail">
           <div className="agent-header">
-            <div className="agent-icon">G</div>
+            <div className="agent-icon">gh</div>
             <div>
-              <h3>GitHub Copilot</h3>
+              <h3>GitHub Copilot CLI</h3>
               <div className="agent-tags">
-                <span className="tag">VS Code 插件</span>
-                <span className="tag">GPT-4o</span>
-                <span className="tag">企业级</span>
+                <span className="tag">Terminal</span>
+                <span className="tag">gh extension</span>
+                <span className="tag">自然语言</span>
               </div>
             </div>
           </div>
 
+          <div className="code-box">
+            <div className="code-title">安装与配置</div>
+            <div><span className="comment"># 安装 GitHub CLI</span></div>
+            <div><span className="cmd">brew install gh</span></div>
+            <div><span className="comment"># 安装 Copilot CLI 扩展</span></div>
+            <div><span className="cmd">gh extension install github/gh-copilot</span></div>
+            <div><span className="comment"># 登录授权</span></div>
+            <div><span className="cmd">gh auth login</span></div>
+          </div>
+
           <div className="feature-grid">
             <div className="feature-item">
-              <h4>🧠 @workspace 上下文</h4>
-              <p>在 Chat 中使用 <code>@workspace</code>，让 AI 读取整个项目的文件。比如："@workspace 这个项目的鉴权逻辑在哪里？"</p>
+              <h4>💬 gh copilot suggest</h4>
+              <p>用自然语言描述你想做的事，Copilot 生成对应的 shell 命令并询问是否执行。<br />例：<code>gh copilot suggest "列出所有超过 100MB 的文件"</code></p>
             </div>
             <div className="feature-item">
-              <h4>🛠️ Slash Commands</h4>
-              <p>使用 <code>/fix</code> 修复报错，<code>/tests</code> 生成测试，<code>/explain</code> 解释代码。比手打 Prompt 更高效。</p>
+              <h4>❓ gh copilot explain</h4>
+              <p>把复杂命令粘贴进来，Copilot 用中文解释每个参数的含义。<br />例：<code>gh copilot explain "git rebase -i HEAD~3"</code></p>
+            </div>
+            <div className="feature-item">
+              <h4>⚙️ 配置别名加速工作流</h4>
+              <p>设置别名 <code>ghcs</code> 和 <code>ghce</code>，让常用命令触手可及。</p>
+            </div>
+            <div className="feature-item">
+              <h4>🔌 MCP 工具支持</h4>
+              <p>Copilot CLI 支持 MCP 服务器，可在终端中扩展 AI 的能力——访问文件、数据库等外部系统。</p>
             </div>
           </div>
 
           <div className="code-box">
-            <div className="code-title">settings.json 高级配置</div>
-            <span className="keyword">"github.copilot.editor.enableAutoCompletions"</span>: <span className="string">true</span>,<br />
-            <span className="keyword">"github.copilot.advanced.messages"</span>: [<span className="string">"gpt-4-0125-preview"</span>] <span className="comment">// 尝试更强模型</span>
+            <div className="code-title">常用命令示例</div>
+            <div><span className="comment"># 询问如何完成一个 shell 任务</span></div>
+            <div><span className="cmd">gh copilot suggest "压缩当前目录下所有 .log 文件"</span></div>
+            <br />
+            <div><span className="comment"># 解释一条复杂命令</span></div>
+            <div><span className="cmd">gh copilot explain "awk '{'{'}print $1{'}'}' access.log | sort | uniq -c | sort -rn"</span></div>
+            <br />
+            <div><span className="comment"># 配置方便的别名（加入 ~/.zshrc）</span></div>
+            <div><span className="kw-blue">alias</span> <span className="func">ghcs</span>=<span className="string">'gh copilot suggest'</span></div>
+            <div><span className="kw-blue">alias</span> <span className="func">ghce</span>=<span className="string">'gh copilot explain'</span></div>
+          </div>
+
+          <div className="callout tip">
+            <h4>💡 最佳实践</h4>
+            <p>Copilot CLI 特别适合：记不住命令参数时直接用自然语言描述；看到别人写的复杂 shell 脚本需要理解时；或者在终端环境中快速生成 Git 操作命令。搭配 <code>--target shell/git/gh</code> 参数可以精确指定命令类型。</p>
           </div>
         </div>
       </section>

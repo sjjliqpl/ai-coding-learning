@@ -20,7 +20,7 @@ const sidebarConfig: SidebarConfig = {
       items: [
         { id: 'config-claude', label: '在 Claude 中配置' },
         { id: 'config-cursor', label: '在 Cursor 中使用' },
-        { id: 'config-copilot', label: '在 GitHub Copilot 中使用' },
+        { id: 'config-copilot', label: '在 Copilot CLI 中使用' },
       ],
     },
     {
@@ -207,27 +207,57 @@ export default function McpPage() {
         </div>
       </section>
 
-      {/* CONFIG COPILOT */}
+      {/* CONFIG COPILOT CLI */}
       <section id="config-copilot" className="section">
-        <h2><span className="icon-sky">🐙</span> 在 GitHub Copilot 中使用 MCP</h2>
-        <p>GitHub Copilot 也在逐步支持 MCP 扩展生态。</p>
+        <h2><span className="icon-sky">🖥️</span> 在 GitHub Copilot CLI 中使用 MCP</h2>
+        <p>GitHub Copilot CLI 支持通过 MCP 扩展其在终端中的能力，让 AI 可以访问外部工具和数据源。</p>
 
-        <div style={{ padding: '2rem', background: 'var(--bg-card)', border: '1px solid var(--glass-border)', borderRadius: 'var(--radius)' }}>
-          <h3 style={{ marginBottom: '1rem' }}>Copilot Extensions</h3>
-          <p style={{ color: 'var(--text-secondary)', lineHeight: 1.8, marginBottom: '1rem' }}>
-            GitHub Copilot 提供了 Extensions 系统，允许 AI 调用外部工具和服务。虽然不完全基于 MCP 标准，但提供了类似的功能。
+        <ol className="step-list">
+          <li className="step-item step-sky">
+            <h4>确保安装了 Copilot CLI</h4>
+            <div className="code-box">
+              <div className="code-title">安装扩展</div>
+              <div style={{ color: '#d4d4d4' }}><span style={{ color: '#a5d6ff' }}>gh extension install</span> github/gh-copilot</div>
+              <div style={{ color: '#d4d4d4' }}><span style={{ color: '#a5d6ff' }}>gh copilot</span> --version</div>
+            </div>
+          </li>
+          <li className="step-item step-sky">
+            <h4>配置 MCP 服务器</h4>
+            <p>在 Copilot CLI 的配置文件中添加 MCP 服务器。配置文件通常位于：<code>~/.config/gh-copilot/config.yaml</code></p>
+            <div className="code-box">
+              <div className="code-title">config.yaml</div>
+<pre style={{ color: '#d4d4d4' }}>{`mcp_servers:
+  - name: `}<span className="string">"filesystem"</span>{`
+    command: `}<span className="string">"npx"</span>{`
+    args:
+      - `}<span className="string">"-y"</span>{`
+      - `}<span className="string">"@modelcontextprotocol/server-filesystem"</span>{`
+      - `}<span className="string">"/Users/username/projects"</span>{`
+  - name: `}<span className="string">"github"</span>{`
+    command: `}<span className="string">"npx"</span>{`
+    args:
+      - `}<span className="string">"-y"</span>{`
+      - `}<span className="string">"@modelcontextprotocol/server-github"</span></pre>
+            </div>
+          </li>
+          <li className="step-item step-sky">
+            <h4>在终端中使用 MCP 扩展能力</h4>
+            <p>配置完成后，Copilot CLI 可以通过 MCP 访问你的文件系统或其他工具：</p>
+            <div className="code-box">
+              <div className="code-title">示例命令</div>
+              <div style={{ color: '#6a9955' }}># 让 Copilot 读取项目文件后给出建议</div>
+              <div style={{ color: '#d4d4d4' }}><span style={{ color: '#a5d6ff' }}>gh copilot suggest</span> <span style={{ color: '#ce9178' }}>"分析我的 src 目录结构并建议优化方案"</span></div>
+              <br />
+              <div style={{ color: '#6a9955' }}># 结合文件系统 MCP 进行代码审查</div>
+              <div style={{ color: '#d4d4d4' }}><span style={{ color: '#a5d6ff' }}>gh copilot explain</span> <span style={{ color: '#ce9178' }}>"review the auth.ts file for security issues"</span></div>
+            </div>
+          </li>
+        </ol>
+
+        <div style={{ marginTop: '1.5rem', padding: '1.5rem', background: 'rgba(96,165,250,0.1)', border: '1px solid rgba(96,165,250,0.2)', borderRadius: '12px' }}>
+          <p style={{ color: 'var(--text-primary)', lineHeight: 1.8 }}>
+            💡 <strong>注意</strong>：GitHub Copilot CLI 的 MCP 支持仍在快速演进中。最新文档请参考 <a href="https://docs.github.com/en/copilot/using-github-copilot/using-github-copilot-in-the-command-line" target="_blank" rel="noreferrer" style={{ color: 'var(--sky)' }}>GitHub Copilot CLI 官方文档</a>。
           </p>
-          <ul style={{ paddingLeft: '1.5rem', color: 'var(--text-secondary)', lineHeight: 1.8 }}>
-            <li>在 VS Code 中安装 GitHub Copilot 扩展</li>
-            <li>通过 <code>@workspace</code> 让 Copilot 理解整个项目上下文</li>
-            <li>通过 <code>@terminal</code> 让 Copilot 执行命令</li>
-            <li>使用 Copilot Chat API 开发自定义扩展</li>
-          </ul>
-          <div style={{ marginTop: '1.5rem', padding: '1rem', background: 'rgba(96,165,250,0.1)', borderRadius: '8px' }}>
-            <p style={{ fontSize: '.9rem', color: 'var(--text-primary)' }}>
-              💡 <strong>注意</strong>：GitHub Copilot 的扩展系统仍在快速发展中，未来可能会更紧密地集成 MCP 标准。
-            </p>
-          </div>
         </div>
       </section>
 

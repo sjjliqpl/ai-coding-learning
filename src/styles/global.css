@@ -145,7 +145,12 @@ code{font-family:var(--font-mono)}
 .card{
   background:var(--bg-card);border:1px solid var(--glass-border);
   border-radius:var(--radius);padding:2rem;
-  transition:all .35s ease;position:relative;overflow:hidden;
+  transition:all .35s ease;position:relative;
+}
+.card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--amber),transparent);
+  opacity:0;transition:opacity .35s ease;border-radius:var(--radius) var(--radius) 0 0;
 }
 .card::before{
   content:'';position:absolute;top:0;left:0;right:0;height:2px;
