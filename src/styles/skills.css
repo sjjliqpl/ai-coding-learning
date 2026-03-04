@@ -1,0 +1,33 @@
+/* ============ SKILLS PAGE SPECIFIC ============ */
+.skills-highlight-box {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  background: rgba(167,139,250,0.12);
+  border: 1px solid rgba(167,139,250,0.25);
+  border-radius: 12px;
+}
+
+.skills-highlight-box p {
+  color: var(--text-primary);
+  line-height: 1.8;
+}
+
+.skills-highlight-box .skills-highlight-en {
+  margin-top: .8rem;
+  color: var(--text-dim);
+  font-size: .9rem;
+  line-height: 1.6;
+}
+
+.skills-tip-box {
+  margin-top: 1rem;
+  padding: 1.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+}
+
+.skills-tip-box p {
+  color: var(--text-secondary);
+  line-height: 1.8;
+}

@@ -1,0 +1,13 @@
+/* ============ ADVANCED PAGE SPECIFIC STYLES ============ */
+
+/* Security warning list */
+.section .callout.warn ul {
+  list-style: disc;
+  padding-left: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.section .callout.warn ul li {
+  margin-bottom: 0.4rem;
+  color: var(--text-secondary);
+}
