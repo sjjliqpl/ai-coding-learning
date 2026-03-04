@@ -87,66 +87,74 @@ export default function AdvancedPage() {
       {/* GITHUB COPILOT CLI */}
       <section id="copilot" className="section">
         <h2><span className="icon">✈️</span> GitHub Copilot CLI</h2>
-        <p>GitHub 官方出品的命令行 AI 助手，让你用自然语言在终端中操作 Git、执行命令、解释代码。</p>
+        <p>GitHub 官方出品的终端 AI 编程助手，在命令行中与 AI 协同完成构建、调试和代码理解任务。由与 GitHub Copilot 编程代理相同的 AI 引擎驱动。</p>
 
         <div className="agent-detail">
           <div className="agent-header">
-            <div className="agent-icon">gh</div>
+            <div className="agent-icon">copilot</div>
             <div>
               <h3>GitHub Copilot CLI</h3>
               <div className="agent-tags">
                 <span className="tag">Terminal</span>
-                <span className="tag">gh extension</span>
-                <span className="tag">自然语言</span>
+                <span className="tag">Agentic AI</span>
+                <span className="tag">Claude Sonnet</span>
+                <span className="tag">MCP 支持</span>
               </div>
             </div>
           </div>
 
           <div className="code-box">
-            <div className="code-title">安装与配置</div>
-            <div><span className="comment"># 安装 GitHub CLI</span></div>
-            <div><span className="cmd">brew install gh</span></div>
-            <div><span className="comment"># 安装 Copilot CLI 扩展</span></div>
-            <div><span className="cmd">gh extension install github/gh-copilot</span></div>
-            <div><span className="comment"># 登录授权</span></div>
-            <div><span className="cmd">gh auth login</span></div>
+            <div className="code-title">安装</div>
+            <div><span className="comment"># macOS / Linux (推荐)</span></div>
+            <div><span className="cmd">brew install copilot-cli</span></div>
+            <br />
+            <div><span className="comment"># 或通过安装脚本</span></div>
+            <div><span className="cmd">curl -fsSL https://gh.io/copilot-install | bash</span></div>
+            <br />
+            <div><span className="comment"># 或通过 npm</span></div>
+            <div><span className="cmd">npm install -g @github/copilot</span></div>
+            <br />
+            <div><span className="comment"># Windows (WinGet)</span></div>
+            <div><span className="cmd">winget install GitHub.Copilot</span></div>
           </div>
 
           <div className="feature-grid">
             <div className="feature-item">
-              <h4>💬 gh copilot suggest</h4>
-              <p>用自然语言描述你想做的事，Copilot 生成对应的 shell 命令并询问是否执行。<br />例：<code>gh copilot suggest "列出所有超过 100MB 的文件"</code></p>
+              <h4>🚀 启动与登录</h4>
+              <p>在项目目录运行 <code>copilot</code> 启动，首次使用输入 <code>/login</code> 进行 GitHub 账号授权，需要有效的 Copilot 订阅。</p>
             </div>
             <div className="feature-item">
-              <h4>❓ gh copilot explain</h4>
-              <p>把复杂命令粘贴进来，Copilot 用中文解释每个参数的含义。<br />例：<code>gh copilot explain "git rebase -i HEAD~3"</code></p>
+              <h4>🤖 Agentic 能力</h4>
+              <p>可规划并执行复杂任务——构建、编辑、调试、重构代码，是真正的 AI 协作者，而非简单的命令生成。</p>
             </div>
             <div className="feature-item">
-              <h4>⚙️ 配置别名加速工作流</h4>
-              <p>设置别名 <code>ghcs</code> 和 <code>ghce</code>，让常用命令触手可及。</p>
+              <h4>🧠 模型选择</h4>
+              <p>默认使用 Claude Sonnet 4.5，运行 <code>/model</code> 可切换至其他模型（如 Claude Sonnet 4、GPT-5）。</p>
             </div>
             <div className="feature-item">
-              <h4>🔌 MCP 工具支持</h4>
-              <p>Copilot CLI 支持 MCP 服务器，可在终端中扩展 AI 的能力——访问文件、数据库等外部系统。</p>
+              <h4>🔌 MCP 生态</h4>
+              <p>内置 GitHub MCP 服务器，同时支持自定义 MCP 服务器扩展——访问文件、数据库、API 等任意外部系统。</p>
             </div>
           </div>
 
           <div className="code-box">
-            <div className="code-title">常用命令示例</div>
-            <div><span className="comment"># 询问如何完成一个 shell 任务</span></div>
-            <div><span className="cmd">gh copilot suggest "压缩当前目录下所有 .log 文件"</span></div>
+            <div className="code-title">常用操作</div>
+            <div><span className="comment"># 启动 Copilot CLI（在项目目录下）</span></div>
+            <div><span className="cmd">copilot</span></div>
             <br />
-            <div><span className="comment"># 解释一条复杂命令</span></div>
-            <div><span className="cmd">gh copilot explain "awk '{'{'}print $1{'}'}' access.log | sort | uniq -c | sort -rn"</span></div>
+            <div><span className="comment"># 在 CLI 中使用斜杠命令</span></div>
+            <div><span className="cmd">/login     </span><span className="comment"># 登录 GitHub</span></div>
+            <div><span className="cmd">/model     </span><span className="comment"># 选择 AI 模型</span></div>
+            <div><span className="cmd">/lsp       </span><span className="comment"># 查看 LSP 服务状态</span></div>
+            <div><span className="cmd">/feedback  </span><span className="comment"># 提交反馈</span></div>
             <br />
-            <div><span className="comment"># 配置方便的别名（加入 ~/.zshrc）</span></div>
-            <div><span className="kw-blue">alias</span> <span className="func">ghcs</span>=<span className="string">'gh copilot suggest'</span></div>
-            <div><span className="kw-blue">alias</span> <span className="func">ghce</span>=<span className="string">'gh copilot explain'</span></div>
+            <div><span className="comment"># Autopilot 模式（实验功能，Shift+Tab 切换）</span></div>
+            <div><span className="cmd">copilot --experimental</span></div>
           </div>
 
           <div className="callout tip">
-            <h4>💡 最佳实践</h4>
-            <p>Copilot CLI 特别适合：记不住命令参数时直接用自然语言描述；看到别人写的复杂 shell 脚本需要理解时；或者在终端环境中快速生成 Git 操作命令。搭配 <code>--target shell/git/gh</code> 参数可以精确指定命令类型。</p>
+            <h4>💡 与传统 AI 工具的区别</h4>
+            <p>GitHub Copilot CLI 不同于 <code>gh copilot suggest/explain</code>（旧版 gh 扩展）。它是一个独立的 agentic 终端应用，能够理解你的代码库、GitHub 上下文，并自主执行复杂的多步骤任务。每次提交 prompt 会消耗一个 premium request 配额。</p>
           </div>
         </div>
       </section>

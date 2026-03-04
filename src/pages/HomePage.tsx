@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
-import { useNavigate } from 'react-router-dom'
+
 import Layout from '../components/Layout'
 import type { SidebarConfig } from '../components/Sidebar'
 import '../styles/home.css'
@@ -348,13 +348,6 @@ function TechTag({ name, index }: { name: string; index: number }) {
   )
 }
 
-const pageLinks = [
-  { path: '/advanced', icon: '🚀', title: 'AI 编程进阶', desc: '掌握高级技巧，成为 AI 编程高手', color: 'var(--teal)' },
-  { path: '/mcp', icon: '🔌', title: 'MCP 协议指南', desc: '了解模型上下文协议，连接更多工具', color: 'var(--sky)' },
-  { path: '/skills', icon: '🧩', title: 'AI Skills 指南', desc: '探索 AI 的各种技能和插件', color: 'var(--lavender)' },
-  { path: '/terminal', icon: '💻', title: '终端掌控术', desc: '掌握命令行，提升开发效率', color: 'var(--rose)' },
-]
-
 /* ============================================================
    SIDEBAR CONFIG
    ============================================================ */
@@ -385,7 +378,15 @@ const sidebarConfig: SidebarConfig = {
         { id: 'demo', label: '互动体验' },
         { id: 'tools', label: '工具推荐' },
         { id: 'faq', label: '常见问题' },
-        { id: 'pages', label: '深入学习' },
+      ]
+    },
+    {
+      title: '深入学习',
+      items: [
+        { id: 'advanced', label: '📚 AI 编程进阶指南', path: '/advanced' },
+        { id: 'mcp', label: '🔌 MCP 协议', path: '/mcp' },
+        { id: 'skills', label: '🎯 技能清单', path: '/skills' },
+        { id: 'terminal', label: '💻 掌握终端', path: '/terminal' },
       ]
     },
   ],
@@ -412,8 +413,6 @@ interface DemoMessage {
 }
 
 export default function HomePage() {
-  const navigate = useNavigate()
-
   // Roadmap mode
   const [roadmapMode, setRoadmapMode] = useState<'simple' | 'detail'>('simple')
 
@@ -423,6 +422,7 @@ export default function HomePage() {
   ])
   const [demoInput, setDemoInput] = useState('')
   const messagesEndRef = useRef<HTMLDivElement>(null)
+  const hasInteracted = useRef(false)
 
   // FAQ
   const [openFaqs, setOpenFaqs] = useState<Set<number>>(new Set())
@@ -445,9 +445,11 @@ export default function HomePage() {
     return () => observer.disconnect()
   }, [roadmapMode])
 
-  // Auto-scroll demo messages
+  // Auto-scroll demo messages (only after user interaction)
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
+    if (hasInteracted.current) {
+      messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
+    }
   }, [demoMessages])
 
   // Reset expanded steps on mode change (noop kept for compatibility)
@@ -457,6 +459,7 @@ export default function HomePage() {
     const text = demoInput.trim()
     if (!text) return
     setDemoInput('')
+    hasInteracted.current = true
 
     const userMsg: DemoMessage = { id: Date.now(), type: 'user', html: escapeHtml(text) }
     setDemoMessages(prev => [...prev, userMsg])
@@ -749,35 +752,6 @@ export default function HomePage() {
               </div>
             </div>
           ))}
-        </div>
-      </section>
-
-      {/* ======= PAGES NAV ======= */}
-      <section className="section" id="pages">
-        <div className="section-label reveal">08 · 深入</div>
-        <h2 className="section-title reveal">深入学习</h2>
-        <p className="section-desc reveal">
-          选择你感兴趣的方向，进入对应的详细指南。
-        </p>
-        <div className="dir-tree reveal">
-          <div className="dir-root">
-            <span className="dir-icon">📁</span>
-            <span className="dir-name">指南</span>
-          </div>
-          <div className="dir-children">
-            {pageLinks.map((p, i) => (
-              <div
-                key={i}
-                className="dir-item"
-                onClick={() => navigate(p.path)}
-              >
-                <span className="dir-connector">├─</span>
-                <span className="dir-file-icon">{p.icon}</span>
-                <span className="dir-item-title" style={{ color: p.color }}>{p.title}</span>
-                <span className="dir-item-desc">{p.desc}</span>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 

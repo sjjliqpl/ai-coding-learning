@@ -210,53 +210,63 @@ export default function McpPage() {
       {/* CONFIG COPILOT CLI */}
       <section id="config-copilot" className="section">
         <h2><span className="icon-sky">🖥️</span> 在 GitHub Copilot CLI 中使用 MCP</h2>
-        <p>GitHub Copilot CLI 支持通过 MCP 扩展其在终端中的能力，让 AI 可以访问外部工具和数据源。</p>
+        <p>GitHub Copilot CLI 内置 GitHub MCP 服务器，并支持添加自定义 MCP 服务器来扩展 AI 在终端中的能力。</p>
 
         <ol className="step-list">
           <li className="step-item step-sky">
-            <h4>确保安装了 Copilot CLI</h4>
+            <h4>安装 GitHub Copilot CLI</h4>
             <div className="code-box">
-              <div className="code-title">安装扩展</div>
-              <div style={{ color: '#d4d4d4' }}><span style={{ color: '#a5d6ff' }}>gh extension install</span> github/gh-copilot</div>
-              <div style={{ color: '#d4d4d4' }}><span style={{ color: '#a5d6ff' }}>gh copilot</span> --version</div>
-            </div>
-          </li>
-          <li className="step-item step-sky">
-            <h4>配置 MCP 服务器</h4>
-            <p>在 Copilot CLI 的配置文件中添加 MCP 服务器。配置文件通常位于：<code>~/.config/gh-copilot/config.yaml</code></p>
-            <div className="code-box">
-              <div className="code-title">config.yaml</div>
-<pre style={{ color: '#d4d4d4' }}>{`mcp_servers:
-  - name: `}<span className="string">"filesystem"</span>{`
-    command: `}<span className="string">"npx"</span>{`
-    args:
-      - `}<span className="string">"-y"</span>{`
-      - `}<span className="string">"@modelcontextprotocol/server-filesystem"</span>{`
-      - `}<span className="string">"/Users/username/projects"</span>{`
-  - name: `}<span className="string">"github"</span>{`
-    command: `}<span className="string">"npx"</span>{`
-    args:
-      - `}<span className="string">"-y"</span>{`
-      - `}<span className="string">"@modelcontextprotocol/server-github"</span></pre>
-            </div>
-          </li>
-          <li className="step-item step-sky">
-            <h4>在终端中使用 MCP 扩展能力</h4>
-            <p>配置完成后，Copilot CLI 可以通过 MCP 访问你的文件系统或其他工具：</p>
-            <div className="code-box">
-              <div className="code-title">示例命令</div>
-              <div style={{ color: '#6a9955' }}># 让 Copilot 读取项目文件后给出建议</div>
-              <div style={{ color: '#d4d4d4' }}><span style={{ color: '#a5d6ff' }}>gh copilot suggest</span> <span style={{ color: '#ce9178' }}>"分析我的 src 目录结构并建议优化方案"</span></div>
+              <div className="code-title">安装</div>
+              <div style={{ color: '#6a9955' }}># macOS / Linux</div>
+              <div style={{ color: '#d4d4d4' }}><span style={{ color: '#a5d6ff' }}>brew install</span> copilot-cli</div>
               <br />
-              <div style={{ color: '#6a9955' }}># 结合文件系统 MCP 进行代码审查</div>
-              <div style={{ color: '#d4d4d4' }}><span style={{ color: '#a5d6ff' }}>gh copilot explain</span> <span style={{ color: '#ce9178' }}>"review the auth.ts file for security issues"</span></div>
+              <div style={{ color: '#6a9955' }}># 或脚本安装</div>
+              <div style={{ color: '#d4d4d4' }}>curl -fsSL https://gh.io/copilot-install | bash</div>
+              <br />
+              <div style={{ color: '#6a9955' }}># 启动并登录</div>
+              <div style={{ color: '#d4d4d4' }}><span style={{ color: '#a5d6ff' }}>copilot</span>   <span style={{ color: '#6a9955' }}># 启动后输入 /login</span></div>
+            </div>
+          </li>
+          <li className="step-item step-sky">
+            <h4>配置自定义 MCP 服务器</h4>
+            <p>在 Copilot CLI 的 MCP 配置文件中添加自定义服务器，默认位置：<code>~/.copilot/mcp.json</code></p>
+            <div className="code-box">
+              <div className="code-title">~/.copilot/mcp.json</div>
+<pre style={{ color: '#d4d4d4' }}>{`{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "/Users/username/projects"
+      ]
+    },
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"]
+    }
+  }
+}`}</pre>
+            </div>
+          </li>
+          <li className="step-item step-sky">
+            <h4>在对话中使用 MCP 能力</h4>
+            <p>配置完成后，直接在 <code>copilot</code> 对话中用自然语言描述任务，AI 会自动调用 MCP 工具访问文件或外部服务：</p>
+            <div className="code-box">
+              <div className="code-title">对话示例（在 copilot 终端中输入）</div>
+              <div style={{ color: '#ce9178' }}>"分析 src 目录的结构，找出可优化的地方"</div>
+              <br />
+              <div style={{ color: '#ce9178' }}>"帮我审查 auth.ts 文件中的安全问题"</div>
+              <br />
+              <div style={{ color: '#ce9178' }}>"列出我在 GitHub 上最近的 open issues 并按优先级排序"</div>
             </div>
           </li>
         </ol>
 
         <div style={{ marginTop: '1.5rem', padding: '1.5rem', background: 'rgba(96,165,250,0.1)', border: '1px solid rgba(96,165,250,0.2)', borderRadius: '12px' }}>
           <p style={{ color: 'var(--text-primary)', lineHeight: 1.8 }}>
-            💡 <strong>注意</strong>：GitHub Copilot CLI 的 MCP 支持仍在快速演进中。最新文档请参考 <a href="https://docs.github.com/en/copilot/using-github-copilot/using-github-copilot-in-the-command-line" target="_blank" rel="noreferrer" style={{ color: 'var(--sky)' }}>GitHub Copilot CLI 官方文档</a>。
+            💡 <strong>内置 GitHub MCP</strong>：Copilot CLI 默认集成了 GitHub 的 MCP 服务器，无需额外配置即可访问你的仓库、issues 和 PR。更多详情参考 <a href="https://docs.github.com/copilot/concepts/agents/about-copilot-cli" target="_blank" rel="noreferrer" style={{ color: 'var(--sky)' }}>GitHub Copilot CLI 官方文档</a>。
           </p>
         </div>
       </section>

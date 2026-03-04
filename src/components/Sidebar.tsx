@@ -4,6 +4,7 @@ import { useNavigate, useLocation } from 'react-router-dom'
 export interface NavItem {
   id: string
   label: string
+  path?: string  // if set, navigate to this route instead of scrolling
 }
 
 export interface NavGroup {
@@ -68,7 +69,8 @@ export default function Sidebar({ config }: Props) {
               <li className="menu-item" key={item.id}>
                 <span
                   className={`menu-link ${activeId === item.id ? config.activeClass : ''}`}
-                  onClick={() => scrollTo(item.id)}
+                  data-nav={item.path ? 'true' : undefined}
+                  onClick={() => item.path ? navigate(item.path) : scrollTo(item.id)}
                 >
                   {item.label}
                 </span>
