@@ -45,10 +45,20 @@ docs/               # 构建输出 (GitHub Pages)
 
 ## 📸 截图
 
-![首页](public/screenshots/index-hero.png)
+### 首页
+![首页](public/screenshots/home.png)
+
+### AI 编程进阶指南
 ![进阶指南](public/screenshots/advanced.png)
+
+### MCP 协议
 ![MCP 协议](public/screenshots/mcp.png)
+
+### AI Skills 清单
 ![Skills](public/screenshots/skills.png)
+
+### 掌握终端
+![终端](public/screenshots/terminal.png)
 
 ## 📜 License
 

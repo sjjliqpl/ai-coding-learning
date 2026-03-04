@@ -91,7 +91,7 @@ export default function AdvancedPage() {
 
         <div className="agent-detail">
           <div className="agent-header">
-            <div className="agent-icon">copilot</div>
+            <div className="agent-icon">G</div>
             <div>
               <h3>GitHub Copilot CLI</h3>
               <div className="agent-tags">
