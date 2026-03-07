@@ -22,6 +22,7 @@ const sidebarConfig: SidebarConfig = {
         { id: 'start', label: '⌨️ 开始学习' },
         { id: 'commands', label: '⌨️ 核心命令' },
         { id: 'macos', label: '🍎 macOS 专属' },
+        { id: 'setup', label: '⚡ 一键环境部署' },
         { id: 'advanced', label: '🔧 进阶技巧' },
       ],
     },
@@ -650,6 +651,154 @@ export default function TerminalPage() {
             <strong>🚀 推荐工具链：</strong>
             <code className="inline-code">iTerm2</code> + <code className="inline-code">oh-my-zsh</code> + <code className="inline-code">powerlevel10k</code> + <code className="inline-code">zsh-autosuggestions</code> + <code className="inline-code">zsh-syntax-highlighting</code>
             — 这是 macOS 开发者最流行的终端配置组合，安装后终端体验质的飞跃。
+          </div>
+        </section>
+
+        <hr className="divider" />
+
+        {/* ONE-CLICK SETUP */}
+        <section id="setup">
+          <div className="section-label">环境部署</div>
+          <h2>一键安装部署<em>终端环境</em></h2>
+          <p className="section-sub">只需一条命令，自动完成 iTerm2、Oh My Zsh、Powerlevel10k 主题及高效插件的全部安装与配置。</p>
+
+          {/* Script block */}
+          <div className="setup-script-wrap">
+            <div className="setup-script-header">
+              <div className="setup-script-title">
+                <span className="setup-script-icon">📜</span>
+                <span>setup-terminal.sh</span>
+                <span className="term-tag tag-tool">一键脚本</span>
+              </div>
+              <div className="setup-script-hint">将以下脚本保存为 <code className="inline-code">setup-terminal.sh</code>，然后运行 <code className="inline-code">bash setup-terminal.sh</code></div>
+            </div>
+            <TerminalWindow title="setup-terminal.sh — 一键终端环境安装脚本" bodyStyle={{ fontSize: 12, maxHeight: 520, overflowY: 'auto' }}>
+              <div className="term-comment">#!/bin/bash</div>
+              <br />
+              <div className="term-line"><span className="term-cmd" style={{ color: 'var(--blue)' }}>set</span> <span style={{ color: 'var(--amber)' }}>-e</span></div>
+              <br />
+              <div className="term-line"><span className="term-cmd"><span className="term-success">echo</span> <span style={{ color: 'var(--amber)' }}>"🚀 开始终端升级之旅..."</span></span></div>
+              <br />
+              <div className="term-comment"># 1. 检查并安装 Homebrew (macOS 包管理器)</div>
+              <div className="term-line"><span style={{ color: 'var(--blue)' }}>if</span> ! command -v brew &amp;&gt; /dev/null; <span style={{ color: 'var(--blue)' }}>then</span></div>
+              <div className="term-line" style={{ paddingLeft: 20 }}><span className="term-cmd"><span className="term-success">echo</span> <span style={{ color: 'var(--amber)' }}>"🍺 正在安装 Homebrew..."</span></span></div>
+              <div className="term-line" style={{ paddingLeft: 20 }}>/bin/bash -c <span style={{ color: 'var(--amber)' }}>"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</span></div>
+              <div className="term-line"><span style={{ color: 'var(--blue)' }}>else</span></div>
+              <div className="term-line" style={{ paddingLeft: 20 }}><span className="term-cmd"><span className="term-success">echo</span> <span style={{ color: 'var(--amber)' }}>"✅ Homebrew 已安装。"</span></span></div>
+              <div className="term-line"><span style={{ color: 'var(--blue)' }}>fi</span></div>
+              <br />
+              <div className="term-comment"># 2. 检查并安装 iTerm2</div>
+              <div className="term-line"><span style={{ color: 'var(--blue)' }}>if</span> [ ! -d <span style={{ color: 'var(--amber)' }}>"/Applications/iTerm.app"</span> ]; <span style={{ color: 'var(--blue)' }}>then</span></div>
+              <div className="term-line" style={{ paddingLeft: 20 }}><span className="term-cmd"><span className="term-success">echo</span> <span style={{ color: 'var(--amber)' }}>"💻 正在安装 iTerm2..."</span></span></div>
+              <div className="term-line" style={{ paddingLeft: 20 }}>brew install --cask iterm2</div>
+              <div className="term-line"><span style={{ color: 'var(--blue)' }}>else</span></div>
+              <div className="term-line" style={{ paddingLeft: 20 }}><span className="term-cmd"><span className="term-success">echo</span> <span style={{ color: 'var(--amber)' }}>"✅ iTerm2 已存在。"</span></span></div>
+              <div className="term-line"><span style={{ color: 'var(--blue)' }}>fi</span></div>
+              <br />
+              <div className="term-comment"># 3. 安装 Oh My Zsh</div>
+              <div className="term-line"><span style={{ color: 'var(--blue)' }}>if</span> [ ! -d <span style={{ color: 'var(--amber)' }}>"$HOME/.oh-my-zsh"</span> ]; <span style={{ color: 'var(--blue)' }}>then</span></div>
+              <div className="term-line" style={{ paddingLeft: 20 }}><span className="term-cmd"><span className="term-success">echo</span> <span style={{ color: 'var(--amber)' }}>"🌈 正在安装 Oh My Zsh..."</span></span></div>
+              <div className="term-line" style={{ paddingLeft: 20 }}>sh -c <span style={{ color: 'var(--amber)' }}>"$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"</span> <span style={{ color: 'var(--t2)' }}>"" --unattended</span></div>
+              <div className="term-line"><span style={{ color: 'var(--blue)' }}>else</span></div>
+              <div className="term-line" style={{ paddingLeft: 20 }}><span className="term-cmd"><span className="term-success">echo</span> <span style={{ color: 'var(--amber)' }}>"✅ Oh My Zsh 已存在。"</span></span></div>
+              <div className="term-line"><span style={{ color: 'var(--blue)' }}>fi</span></div>
+              <br />
+              <div className="term-comment"># 定义路径</div>
+              <div className="term-line"><span className="term-highlight">ZSH_CUSTOM</span>=${'{'}<span className="term-highlight">ZSH_CUSTOM</span>:-<span style={{ color: 'var(--amber)' }}>$HOME/.oh-my-zsh/custom</span>{'}'}</div>
+              <br />
+              <div className="term-comment"># 4. 下载 Powerlevel10k 主题</div>
+              <div className="term-line"><span className="term-success">echo</span> <span style={{ color: 'var(--amber)' }}>"🎨 下载 Powerlevel10k..."</span></div>
+              <div className="term-line">[ ! -d <span style={{ color: 'var(--amber)' }}>"$ZSH_CUSTOM/themes/powerlevel10k"</span> ] &amp;&amp; \</div>
+              <div className="term-line" style={{ paddingLeft: 20 }}>git clone --depth=1 https://github.com/romkatv/powerlevel10k.git <span className="term-path">$ZSH_CUSTOM/themes/powerlevel10k</span></div>
+              <br />
+              <div className="term-comment"># 5. 下载插件 (Autosuggestions &amp; Syntax Highlighting)</div>
+              <div className="term-line"><span className="term-success">echo</span> <span style={{ color: 'var(--amber)' }}>"🔌 下载效率插件..."</span></div>
+              <div className="term-line">[ ! -d <span style={{ color: 'var(--amber)' }}>"$ZSH_CUSTOM/plugins/zsh-autosuggestions"</span> ] &amp;&amp; \</div>
+              <div className="term-line" style={{ paddingLeft: 20 }}>git clone https://github.com/zsh-users/zsh-autosuggestions <span className="term-path">$ZSH_CUSTOM/plugins/zsh-autosuggestions</span></div>
+              <br />
+              <div className="term-line">[ ! -d <span style={{ color: 'var(--amber)' }}>"$ZSH_CUSTOM/plugins/zsh-syntax-highlighting"</span> ] &amp;&amp; \</div>
+              <div className="term-line" style={{ paddingLeft: 20 }}>git clone https://github.com/zsh-users/zsh-syntax-highlighting.git <span className="term-path">$ZSH_CUSTOM/plugins/zsh-syntax-highlighting</span></div>
+              <br />
+              <div className="term-comment"># 6. 修改 .zshrc 配置文件</div>
+              <div className="term-line"><span className="term-success">echo</span> <span style={{ color: 'var(--amber)' }}>"⚙️ 正在写入配置到 .zshrc..."</span></div>
+              <br />
+              <div className="term-comment"># 设置主题</div>
+              <div className="term-line">sed -i <span style={{ color: 'var(--amber)' }}>''</span> <span style={{ color: 'var(--green)' }}>'s/ZSH_THEME="robbyrussell"/ZSH_THEME="powerlevel10k\/powerlevel10k"/g'</span> ~/.zshrc</div>
+              <br />
+              <div className="term-comment"># 设置插件</div>
+              <div className="term-line">sed -i <span style={{ color: 'var(--amber)' }}>''</span> <span style={{ color: 'var(--green)' }}>'s/plugins=(git)/plugins=(git zsh-autosuggestions zsh-syntax-highlighting)/g'</span> ~/.zshrc</div>
+              <br />
+              <div className="term-line"><span className="term-success">echo</span> <span style={{ color: 'var(--t2)' }}>"-----------------------------------------------"</span></div>
+              <div className="term-line"><span className="term-success">echo</span> <span style={{ color: 'var(--amber)' }}>"✨ 全部安装完成！"</span></div>
+              <div className="term-line"><span className="term-success">echo</span> <span style={{ color: 'var(--blue)' }}>"👉 请执行: source ~/.zshrc"</span></div>
+              <div className="term-line"><span className="term-success">echo</span> <span style={{ color: 'var(--t2)' }}>"👉 注意：建议在 iTerm2 设置中手动安装 'MesloLGS NF' 字体以完美显示图标。"</span></div>
+              <div className="term-line"><span className="term-success">echo</span> <span style={{ color: 'var(--t2)' }}>"-----------------------------------------------"</span></div>
+            </TerminalWindow>
+          </div>
+
+          {/* Core config guide */}
+          <div className="setup-guide-grid">
+            <div className="setup-guide-card">
+              <div className="setup-guide-num">1</div>
+              <div className="setup-guide-content">
+                <h3>🔤 字体是灵魂</h3>
+                <p>Powerlevel10k 的图标需要 <strong>Nerd Fonts</strong> 支持，否则会显示乱码方块。</p>
+                <div className="setup-guide-steps">
+                  <div className="setup-guide-step">
+                    <span className="setup-step-tag">自动</span>
+                    运行 <code className="inline-code">source ~/.zshrc</code> 后，P10k 可能提示 <em>Install Meslo Nerd Font for you?</em>，直接输入 <code className="inline-code">y</code> 即可。
+                  </div>
+                  <div className="setup-guide-step">
+                    <span className="setup-step-tag">手动</span>
+                    打开 iTerm2 设置 <code className="inline-code">Cmd + ,</code> → <strong>Profiles</strong> → <strong>Text</strong> → <strong>Font</strong>，选择 <code className="inline-code">MesloLGS NF</code>。
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="setup-guide-card">
+              <div className="setup-guide-num">2</div>
+              <div className="setup-guide-content">
+                <h3>🎨 iTerm2 配色方案</h3>
+                <p>推荐一个经典组合，让你的界面看起来专业舒适：</p>
+                <div className="setup-guide-steps">
+                  <div className="setup-guide-step">
+                    <span className="setup-step-tag">推荐</span>
+                    前往 <a href="https://iterm2colorschemes.com" target="_blank" rel="noopener noreferrer" className="setup-link">iTerm2 Color Schemes</a>，个人推荐 <strong>Snazzy</strong> 或 <strong>Solarized Dark Higher Contrast</strong>。
+                  </div>
+                  <div className="setup-guide-step">
+                    <span className="setup-step-tag">导入</span>
+                    在 iTerm2 设置 → <strong>Profiles</strong> → <strong>Colors</strong> → <strong>Color Presets</strong> 中导入下载的 <code className="inline-code">.itermcolors</code> 文件。
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Shortcut keys */}
+          <div className="setup-shortcuts">
+            <div className="section-label" style={{ marginBottom: 20 }}>📖 常用快捷键复习</div>
+            <div className="setup-shortcuts-grid">
+              <div className="setup-shortcut-row setup-shortcut-header">
+                <div>功能</div>
+                <div>操作</div>
+              </div>
+              <div className="setup-shortcut-row">
+                <div>自动补全建议</div>
+                <div>输入部分命令后，按 <kbd>→</kbd>（方向右键）采纳灰色提示</div>
+              </div>
+              <div className="setup-shortcut-row">
+                <div>语法高亮</div>
+                <div><span style={{ color: 'var(--red)' }}>红色</span>说明命令不存在或有错，<span style={{ color: 'var(--green)' }}>绿色</span>表示正确</div>
+              </div>
+              <div className="setup-shortcut-row">
+                <div>重新配置界面</div>
+                <div>输入 <code className="inline-code">p10k configure</code></div>
+              </div>
+              <div className="setup-shortcut-row">
+                <div>快速跳转目录</div>
+                <div>配合 <code className="inline-code">z</code> 插件（Oh My Zsh 自带，在 plugins 中加入 <code className="inline-code">z</code>）</div>
+              </div>
+            </div>
           </div>
         </section>
 
