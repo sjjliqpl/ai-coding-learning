@@ -387,6 +387,8 @@ const sidebarConfig: SidebarConfig = {
         { id: 'mcp', label: '🔌 MCP 协议', path: '/mcp' },
         { id: 'skills', label: '🎯 技能清单', path: '/skills' },
         { id: 'terminal', label: '💻 掌握终端', path: '/terminal' },
+        { id: 'markdown', label: '📝 Markdown 入门', path: '/markdown' },
+        { id: 'git', label: '🌿 Git & GitHub', path: '/git' },
       ]
     },
   ],

@@ -72,6 +72,14 @@ code{font-family:var(--font-mono)}
   background:linear-gradient(135deg,var(--lavender),var(--sky));
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;
 }
+.brand.gradient-teal-lavender{
+  background:linear-gradient(135deg,var(--teal),var(--lavender));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.brand.gradient-coral-amber{
+  background:linear-gradient(135deg,var(--coral),var(--amber));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
 .brand.terminal-brand{
   font-family:var(--font-mono);font-weight:700;font-size:1rem;
   color:#00E87A;letter-spacing:-0.02em;
@@ -113,6 +121,14 @@ code{font-family:var(--font-mono)}
   background:rgba(0,232,122,0.12);color:#00E87A;
   border-color:rgba(0,232,122,0.2);
 }
+.menu-link.active-teal{
+  background:rgba(78,205,196,0.12);color:var(--teal);
+  border-color:rgba(78,205,196,0.25);
+}
+.menu-link.active-coral{
+  background:rgba(238,108,77,0.12);color:var(--coral);
+  border-color:rgba(238,108,77,0.25);
+}
 .back-btn{
   margin-top:auto;padding-top:1.5rem;
   border-top:1px solid var(--glass-border);
@@ -143,6 +159,8 @@ code{font-family:var(--font-mono)}
 .section h2 .icon{color:var(--teal)}
 .section h2 .icon-sky{color:var(--sky)}
 .section h2 .icon-lavender{color:var(--lavender)}
+.section h2 .icon-teal{color:var(--teal)}
+.section h2 .icon-coral{color:var(--coral)}
 .section h3{font-size:1.4rem;margin:2rem 0 1rem;color:var(--text-primary)}
 .section p{margin-bottom:1rem;color:var(--text-secondary)}
 

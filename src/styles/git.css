@@ -1,0 +1,138 @@
+/* ============ GIT PAGE SPECIFIC ============ */
+
+/* Git workflow diagram */
+.git-flow {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin: 1.5rem 0;
+  overflow-x: auto;
+  padding-bottom: .5rem;
+}
+.git-flow-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .4rem;
+  min-width: 90px;
+}
+.git-flow-circle {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  border: 2px solid var(--glass-border);
+  background: var(--bg-card);
+  transition: border-color .2s;
+}
+.git-flow-node:hover .git-flow-circle { border-color: var(--coral); }
+.git-flow-label {
+  font-size: .72rem;
+  color: var(--text-dim);
+  text-align: center;
+  font-family: var(--font-mono);
+  white-space: nowrap;
+}
+.git-flow-arrow {
+  color: var(--text-dim);
+  font-size: 1.2rem;
+  padding: 0 .3rem;
+  margin-bottom: 1.2rem;
+  flex-shrink: 0;
+}
+
+/* Command reference cards */
+.git-cmd-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.2rem;
+  margin-top: 1.5rem;
+}
+.git-cmd-card {
+  background: var(--bg-card);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  padding: 1.4rem;
+  transition: all .3s ease;
+}
+.git-cmd-card:hover { transform: translateY(-4px); border-color: rgba(238,108,77,0.3); }
+.git-cmd-card h4 { font-size: .95rem; color: var(--coral); margin-bottom: .5rem; font-family: var(--font-display); }
+.git-cmd-card p { font-size: .84rem; color: var(--text-secondary); margin-bottom: .6rem; line-height: 1.6; }
+
+/* Comparison box */
+.git-vs {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 1rem;
+  align-items: center;
+  margin: 1.5rem 0;
+}
+.git-vs-box {
+  background: var(--bg-card);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+}
+.git-vs-box.git-side { border-color: rgba(238,108,77,0.3); }
+.git-vs-box.github-side { border-color: rgba(96,165,250,0.3); }
+.git-vs-title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: .8rem;
+}
+.git-vs-title.git-color { color: var(--coral); }
+.git-vs-title.github-color { color: var(--sky); }
+.git-vs-sep {
+  font-size: 1.8rem;
+  color: var(--text-dim);
+  text-align: center;
+  font-weight: 300;
+}
+.git-vs-list {
+  padding-left: 1.2rem;
+  color: var(--text-secondary);
+  font-size: .88rem;
+  line-height: 1.8;
+}
+
+/* Highlight box coral variant */
+.highlight-coral {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  background: rgba(238,108,77,0.08);
+  border: 1px solid rgba(238,108,77,0.2);
+  border-radius: 12px;
+}
+.highlight-coral p {
+  color: var(--text-primary);
+  line-height: 1.8;
+  margin: 0;
+}
+
+/* Analogy card */
+.git-analogy {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+.git-analogy-item {
+  background: var(--bg-card);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-sm);
+  padding: 1.2rem;
+  text-align: center;
+}
+.git-analogy-item .emoji { font-size: 2rem; display: block; margin-bottom: .5rem; }
+.git-analogy-item .git-term { font-family: var(--font-mono); font-size: .8rem; color: var(--coral); display: block; margin-bottom: .3rem; }
+.git-analogy-item .analogy-text { font-size: .84rem; color: var(--text-secondary); line-height: 1.5; }
+
+@media (max-width: 768px) {
+  .git-vs { grid-template-columns: 1fr; }
+  .git-vs-sep { display: none; }
+  .git-flow { flex-wrap: nowrap; }
+}
