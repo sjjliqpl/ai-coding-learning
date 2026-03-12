@@ -3,6 +3,68 @@ import Layout from '../components/Layout'
 import type { SidebarConfig } from '../components/Sidebar'
 import '../styles/terminal.css'
 
+const SETUP_SCRIPT = `#!/bin/bash
+
+set -e
+
+echo "🚀 开始终端升级之旅..."
+
+# 1. 检查并安装 Homebrew (macOS 包管理器)
+if ! command -v brew &> /dev/null; then
+  echo "🍺 正在安装 Homebrew..."
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+else
+  echo "✅ Homebrew 已安装。"
+fi
+
+# 2. 检查并安装 iTerm2
+if [ ! -d "/Applications/iTerm.app" ]; then
+  echo "💻 正在安装 iTerm2..."
+  brew install --cask iterm2
+else
+  echo "✅ iTerm2 已存在。"
+fi
+
+# 3. 安装 Oh My Zsh
+if [ ! -d "$HOME/.oh-my-zsh" ]; then
+  echo "🌈 正在安装 Oh My Zsh..."
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+else
+  echo "✅ Oh My Zsh 已存在。"
+fi
+
+# 定义路径
+ZSH_CUSTOM=\${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}
+
+# 4. 下载 Powerlevel10k 主题
+echo "🎨 下载 Powerlevel10k..."
+[ ! -d "$ZSH_CUSTOM/themes/powerlevel10k" ] && \\
+  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
+
+# 5. 下载插件 (Autosuggestions & Syntax Highlighting)
+echo "🔌 下载效率插件..."
+[ ! -d "$ZSH_CUSTOM/plugins/zsh-autosuggestions" ] && \\
+  git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
+
+[ ! -d "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting" ] && \\
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
+
+# 6. 修改 .zshrc 配置文件
+echo "⚙️ 正在写入配置到 .zshrc..."
+
+# 设置主题
+sed -i '' 's/ZSH_THEME="robbyrussell"/ZSH_THEME="powerlevel10k\\/powerlevel10k"/g' ~/.zshrc
+
+# 设置插件
+sed -i '' 's/plugins=(git)/plugins=(git zsh-autosuggestions zsh-syntax-highlighting)/g' ~/.zshrc
+
+echo "-----------------------------------------------"
+echo "✨ 全部安装完成！"
+echo "👉 请执行: source ~/.zshrc"
+echo "👉 注意：建议在 iTerm2 设置中手动安装 'MesloLGS NF' 字体以完美显示图标。"
+echo "-----------------------------------------------"
+`
+
 const sidebarConfig: SidebarConfig = {
   brandText: 'Terminal Mastery',
   brandGradient: 'terminal-brand',
@@ -76,7 +138,27 @@ function CmdCard({ title, name, desc, children }: { title: string; name: string;
 export default function TerminalPage() {
   const [scrollPct, setScrollPct] = useState(0)
   const [typedText, setTypedText] = useState('')
+  const [copiedScript, setCopiedScript] = useState(false)
   const mainRef = useRef<HTMLDivElement>(null)
+
+  const handleCopyScript = useCallback(() => {
+    navigator.clipboard.writeText(SETUP_SCRIPT).then(() => {
+      setCopiedScript(true)
+      setTimeout(() => setCopiedScript(false), 2000)
+    }).catch(() => {
+      // fallback: do nothing if clipboard access is denied
+    })
+  }, [])
+
+  const handleDownloadScript = useCallback(() => {
+    const blob = new Blob([SETUP_SCRIPT], { type: 'text/x-sh' })
+    const url = URL.createObjectURL(blob)
+    const a = document.createElement('a')
+    a.href = url
+    a.download = 'setup-terminal.sh'
+    a.click()
+    setTimeout(() => URL.revokeObjectURL(url), 100)
+  }, [])
 
   // Scroll progress
   const handleScroll = useCallback(() => {
@@ -670,8 +752,24 @@ export default function TerminalPage() {
                 <span>setup-terminal.sh</span>
                 <span className="term-tag tag-tool">一键脚本</span>
               </div>
-              <div className="setup-script-hint">将以下脚本保存为 <code className="inline-code">setup-terminal.sh</code>，然后运行 <code className="inline-code">bash setup-terminal.sh</code></div>
+              <div className="setup-script-actions">
+                <button
+                  className={`setup-script-btn${copiedScript ? ' copied' : ''}`}
+                  onClick={handleCopyScript}
+                  title="复制脚本内容"
+                >
+                  {copiedScript ? '✅ 已复制' : '📋 一键复制'}
+                </button>
+                <button
+                  className="setup-script-btn"
+                  onClick={handleDownloadScript}
+                  title="下载脚本文件"
+                >
+                  ⬇️ 下载脚本
+                </button>
+              </div>
             </div>
+            <div className="setup-script-hint-row">将以下脚本保存为 <code className="inline-code">setup-terminal.sh</code>，然后运行 <code className="inline-code">bash setup-terminal.sh</code></div>
             <TerminalWindow title="setup-terminal.sh — 一键终端环境安装脚本" bodyStyle={{ fontSize: 12, maxHeight: 520, overflowY: 'auto' }}>
               <div className="term-comment">#!/bin/bash</div>
               <br />
