@@ -650,6 +650,8 @@
   padding: 2px 7px;
   border-radius: 3px;
   color: var(--amber);
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .terminal-page .term-tag {
@@ -992,6 +994,7 @@
   gap: 18px;
   align-items: flex-start;
   transition: border-color 0.2s;
+  min-width: 0;
 }
 
 .terminal-page .setup-guide-card:hover { border-color: var(--border-b); }
@@ -1009,6 +1012,11 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+}
+
+.terminal-page .setup-guide-content {
+  min-width: 0;
+  overflow: hidden;
 }
 
 .terminal-page .setup-guide-content h3 {
