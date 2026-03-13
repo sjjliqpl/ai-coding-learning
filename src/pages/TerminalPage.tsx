@@ -17,15 +17,7 @@ else
   echo "✅ Homebrew 已安装。"
 fi
 
-# 2. 检查并安装 iTerm2
-if [ ! -d "/Applications/iTerm.app" ]; then
-  echo "💻 正在安装 iTerm2..."
-  brew install --cask iterm2
-else
-  echo "✅ iTerm2 已存在。"
-fi
-
-# 3. 安装 Oh My Zsh
+# 2. 安装 Oh My Zsh
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
   echo "🌈 正在安装 Oh My Zsh..."
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
@@ -36,12 +28,12 @@ fi
 # 定义路径
 ZSH_CUSTOM=\${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}
 
-# 4. 下载 Powerlevel10k 主题
+# 3. 下载 Powerlevel10k 主题
 echo "🎨 下载 Powerlevel10k..."
 [ ! -d "$ZSH_CUSTOM/themes/powerlevel10k" ] && \\
   git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
 
-# 5. 下载插件 (Autosuggestions & Syntax Highlighting)
+# 4. 下载插件 (Autosuggestions & Syntax Highlighting)
 echo "🔌 下载效率插件..."
 [ ! -d "$ZSH_CUSTOM/plugins/zsh-autosuggestions" ] && \\
   git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
@@ -49,7 +41,7 @@ echo "🔌 下载效率插件..."
 [ ! -d "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting" ] && \\
   git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
 
-# 6. 修改 .zshrc 配置文件
+# 5. 修改 .zshrc 配置文件
 echo "⚙️ 正在写入配置到 .zshrc..."
 
 # 设置主题
@@ -61,7 +53,7 @@ sed -i '' 's/plugins=(git)/plugins=(git zsh-autosuggestions zsh-syntax-highlight
 echo "-----------------------------------------------"
 echo "✨ 全部安装完成！"
 echo "👉 请执行: source ~/.zshrc"
-echo "👉 注意：建议在 iTerm2 设置中手动安装 'MesloLGS NF' 字体以完美显示图标。"
+echo "👉 注意：建议手动安装 Nerd Fonts 字体（如 'MesloLGS NF'）以完美显示图标。"
 echo "-----------------------------------------------"
 `
 
@@ -356,7 +348,7 @@ export default function TerminalPage() {
               <div className="path-items">
                 <div className="path-item">Homebrew 包管理</div>
                 <div className="path-item">oh-my-zsh 配置</div>
-                <div className="path-item">iTerm2 优化</div>
+                <div className="path-item">终端优化</div>
                 <div className="path-item">PATH 环境变量</div>
               </div>
             </div>
@@ -412,13 +404,9 @@ export default function TerminalPage() {
                 <h3 style={{ fontSize: 16 }}>📁 访达 (Finder)</h3>
                 <p>打开 Finder → 应用程序 → 实用工具 → 终端。适合不熟悉快捷键的新手。</p>
               </div>
-              <div className="macos-card">
-                <h3 style={{ fontSize: 16 }}>💻 iTerm2 <span className="term-tag tag-tool">推荐</span></h3>
-                <p>更强大的终端替代品。访问 <span className="inline-code">iterm2.com</span> 下载，功能远超系统终端。</p>
-              </div>
             </div>
             <div className="tip">
-              <strong>💡 推荐：</strong>安装 iTerm2 作为默认终端。它支持分屏、丰富的主题、更好的颜色渲染，是专业用户的首选。
+              <strong>💡 提示：</strong>你也可以考虑使用功能更丰富的第三方终端工具，如 iTerm2、Warp 或 Alacritty 等，它们支持分屏、丰富的主题、更好的颜色渲染等高级功能。
             </div>
           </div>
 
@@ -731,7 +719,7 @@ export default function TerminalPage() {
           </div>
           <div className="tip" style={{ marginTop: 32 }}>
             <strong>🚀 推荐工具链：</strong>
-            <code className="inline-code">iTerm2</code> + <code className="inline-code">oh-my-zsh</code> + <code className="inline-code">powerlevel10k</code> + <code className="inline-code">zsh-autosuggestions</code> + <code className="inline-code">zsh-syntax-highlighting</code>
+            <code className="inline-code">oh-my-zsh</code> + <code className="inline-code">powerlevel10k</code> + <code className="inline-code">zsh-autosuggestions</code> + <code className="inline-code">zsh-syntax-highlighting</code>
             — 这是 macOS 开发者最流行的终端配置组合，安装后终端体验质的飞跃。
           </div>
         </section>
@@ -742,7 +730,7 @@ export default function TerminalPage() {
         <section id="setup">
           <div className="section-label">环境部署</div>
           <h2>一键安装部署<em>终端环境</em></h2>
-          <p className="section-sub">只需一条命令，自动完成 iTerm2、Oh My Zsh、Powerlevel10k 主题及高效插件的全部安装与配置。</p>
+          <p className="section-sub">只需一条命令，自动完成 Oh My Zsh、Powerlevel10k 主题及高效插件的全部安装与配置。</p>
 
           {/* Script block */}
           <div className="setup-script-wrap">
@@ -785,15 +773,7 @@ export default function TerminalPage() {
               <div className="term-line" style={{ paddingLeft: 20 }}><span className="term-cmd"><span className="term-success">echo</span> <span style={{ color: 'var(--amber)' }}>"✅ Homebrew 已安装。"</span></span></div>
               <div className="term-line"><span style={{ color: 'var(--blue)' }}>fi</span></div>
               <br />
-              <div className="term-comment"># 2. 检查并安装 iTerm2</div>
-              <div className="term-line"><span style={{ color: 'var(--blue)' }}>if</span> [ ! -d <span style={{ color: 'var(--amber)' }}>"/Applications/iTerm.app"</span> ]; <span style={{ color: 'var(--blue)' }}>then</span></div>
-              <div className="term-line" style={{ paddingLeft: 20 }}><span className="term-cmd"><span className="term-success">echo</span> <span style={{ color: 'var(--amber)' }}>"💻 正在安装 iTerm2..."</span></span></div>
-              <div className="term-line" style={{ paddingLeft: 20 }}>brew install --cask iterm2</div>
-              <div className="term-line"><span style={{ color: 'var(--blue)' }}>else</span></div>
-              <div className="term-line" style={{ paddingLeft: 20 }}><span className="term-cmd"><span className="term-success">echo</span> <span style={{ color: 'var(--amber)' }}>"✅ iTerm2 已存在。"</span></span></div>
-              <div className="term-line"><span style={{ color: 'var(--blue)' }}>fi</span></div>
-              <br />
-              <div className="term-comment"># 3. 安装 Oh My Zsh</div>
+              <div className="term-comment"># 2. 安装 Oh My Zsh</div>
               <div className="term-line"><span style={{ color: 'var(--blue)' }}>if</span> [ ! -d <span style={{ color: 'var(--amber)' }}>"$HOME/.oh-my-zsh"</span> ]; <span style={{ color: 'var(--blue)' }}>then</span></div>
               <div className="term-line" style={{ paddingLeft: 20 }}><span className="term-cmd"><span className="term-success">echo</span> <span style={{ color: 'var(--amber)' }}>"🌈 正在安装 Oh My Zsh..."</span></span></div>
               <div className="term-line" style={{ paddingLeft: 20 }}>sh -c <span style={{ color: 'var(--amber)' }}>"$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"</span> <span style={{ color: 'var(--t2)' }}>"" --unattended</span></div>
@@ -804,12 +784,12 @@ export default function TerminalPage() {
               <div className="term-comment"># 定义路径</div>
               <div className="term-line"><span className="term-highlight">ZSH_CUSTOM</span>=${'{'}<span className="term-highlight">ZSH_CUSTOM</span>:-<span style={{ color: 'var(--amber)' }}>$HOME/.oh-my-zsh/custom</span>{'}'}</div>
               <br />
-              <div className="term-comment"># 4. 下载 Powerlevel10k 主题</div>
+              <div className="term-comment"># 3. 下载 Powerlevel10k 主题</div>
               <div className="term-line"><span className="term-success">echo</span> <span style={{ color: 'var(--amber)' }}>"🎨 下载 Powerlevel10k..."</span></div>
               <div className="term-line">[ ! -d <span style={{ color: 'var(--amber)' }}>"$ZSH_CUSTOM/themes/powerlevel10k"</span> ] &amp;&amp; \</div>
               <div className="term-line" style={{ paddingLeft: 20 }}>git clone --depth=1 https://github.com/romkatv/powerlevel10k.git <span className="term-path">$ZSH_CUSTOM/themes/powerlevel10k</span></div>
               <br />
-              <div className="term-comment"># 5. 下载插件 (Autosuggestions &amp; Syntax Highlighting)</div>
+              <div className="term-comment"># 4. 下载插件 (Autosuggestions &amp; Syntax Highlighting)</div>
               <div className="term-line"><span className="term-success">echo</span> <span style={{ color: 'var(--amber)' }}>"🔌 下载效率插件..."</span></div>
               <div className="term-line">[ ! -d <span style={{ color: 'var(--amber)' }}>"$ZSH_CUSTOM/plugins/zsh-autosuggestions"</span> ] &amp;&amp; \</div>
               <div className="term-line" style={{ paddingLeft: 20 }}>git clone https://github.com/zsh-users/zsh-autosuggestions <span className="term-path">$ZSH_CUSTOM/plugins/zsh-autosuggestions</span></div>
@@ -817,7 +797,7 @@ export default function TerminalPage() {
               <div className="term-line">[ ! -d <span style={{ color: 'var(--amber)' }}>"$ZSH_CUSTOM/plugins/zsh-syntax-highlighting"</span> ] &amp;&amp; \</div>
               <div className="term-line" style={{ paddingLeft: 20 }}>git clone https://github.com/zsh-users/zsh-syntax-highlighting.git <span className="term-path">$ZSH_CUSTOM/plugins/zsh-syntax-highlighting</span></div>
               <br />
-              <div className="term-comment"># 6. 修改 .zshrc 配置文件</div>
+              <div className="term-comment"># 5. 修改 .zshrc 配置文件</div>
               <div className="term-line"><span className="term-success">echo</span> <span style={{ color: 'var(--amber)' }}>"⚙️ 正在写入配置到 .zshrc..."</span></div>
               <br />
               <div className="term-comment"># 设置主题</div>
@@ -829,7 +809,7 @@ export default function TerminalPage() {
               <div className="term-line"><span className="term-success">echo</span> <span style={{ color: 'var(--t2)' }}>"-----------------------------------------------"</span></div>
               <div className="term-line"><span className="term-success">echo</span> <span style={{ color: 'var(--amber)' }}>"✨ 全部安装完成！"</span></div>
               <div className="term-line"><span className="term-success">echo</span> <span style={{ color: 'var(--blue)' }}>"👉 请执行: source ~/.zshrc"</span></div>
-              <div className="term-line"><span className="term-success">echo</span> <span style={{ color: 'var(--t2)' }}>"👉 注意：建议在 iTerm2 设置中手动安装 'MesloLGS NF' 字体以完美显示图标。"</span></div>
+              <div className="term-line"><span className="term-success">echo</span> <span style={{ color: 'var(--t2)' }}>"👉 注意：建议手动安装 Nerd Fonts 字体（如 'MesloLGS NF'）以完美显示图标。"</span></div>
               <div className="term-line"><span className="term-success">echo</span> <span style={{ color: 'var(--t2)' }}>"-----------------------------------------------"</span></div>
             </TerminalWindow>
           </div>
@@ -839,16 +819,29 @@ export default function TerminalPage() {
             <div className="setup-guide-card">
               <div className="setup-guide-num">1</div>
               <div className="setup-guide-content">
-                <h3>🔤 字体是灵魂</h3>
-                <p>Powerlevel10k 的图标需要 <strong>Nerd Fonts</strong> 支持，否则会显示乱码方块。</p>
+                <h3>🔤 安装 Nerd Fonts 字体</h3>
+                <p>Powerlevel10k 的图标需要 <strong>Nerd Fonts</strong> 支持，否则会显示乱码方块。推荐使用 <strong>MesloLGS NF</strong> 字体。</p>
                 <div className="setup-guide-steps">
                   <div className="setup-guide-step">
-                    <span className="setup-step-tag">自动</span>
-                    运行 <code className="inline-code">source ~/.zshrc</code> 后，P10k 可能提示 <em>Install Meslo Nerd Font for you?</em>，直接输入 <code className="inline-code">y</code> 即可。
+                    <span className="setup-step-tag">方式1：自动安装</span>
+                    运行 <code className="inline-code">source ~/.zshrc</code> 后，P10k 可能提示 <em>Install Meslo Nerd Font for you?</em>，直接输入 <code className="inline-code">y</code> 即可自动安装。
                   </div>
                   <div className="setup-guide-step">
-                    <span className="setup-step-tag">手动</span>
-                    打开 iTerm2 设置 <code className="inline-code">Cmd + ,</code> → <strong>Profiles</strong> → <strong>Text</strong> → <strong>Font</strong>，选择 <code className="inline-code">MesloLGS NF</code>。
+                    <span className="setup-step-tag">方式2：Homebrew 安装</span>
+                    通过 Homebrew 安装 Nerd Fonts：<br />
+                    <code className="inline-code">brew tap homebrew/cask-fonts</code><br />
+                    <code className="inline-code">brew install --cask font-meslo-lg-nerd-font</code>
+                  </div>
+                  <div className="setup-guide-step">
+                    <span className="setup-step-tag">方式3：手动下载</span>
+                    访问 <a href="https://www.nerdfonts.com/font-downloads" target="_blank" rel="noopener noreferrer" className="setup-link">Nerd Fonts 官网</a>，下载 MesloLGS NF 字体包，解压后双击 <code className="inline-code">.ttf</code> 文件安装。
+                  </div>
+                  <div className="setup-guide-step">
+                    <span className="setup-step-tag">配置终端</span>
+                    安装完成后，在你的终端设置中选择 <code className="inline-code">MesloLGS NF</code> 字体。不同终端应用的设置路径：<br />
+                    • <strong>Terminal.app</strong>: 偏好设置 → 描述文件 → 文本 → 字体<br />
+                    • <strong>iTerm2</strong>: <code className="inline-code">Cmd + ,</code> → Profiles → Text → Font<br />
+                    • <strong>VS Code 终端</strong>: 设置中搜索 <code className="inline-code">terminal.integrated.fontFamily</code>，设置为 <code className="inline-code">"MesloLGS NF"</code>
                   </div>
                 </div>
               </div>
@@ -856,16 +849,25 @@ export default function TerminalPage() {
             <div className="setup-guide-card">
               <div className="setup-guide-num">2</div>
               <div className="setup-guide-content">
-                <h3>🎨 iTerm2 配色方案</h3>
-                <p>推荐一个经典组合，让你的界面看起来专业舒适：</p>
+                <h3>🎨 配置终端配色方案</h3>
+                <p>优秀的配色方案可以提升终端的可读性和美观度。以下是一些推荐配置：</p>
                 <div className="setup-guide-steps">
                   <div className="setup-guide-step">
-                    <span className="setup-step-tag">推荐</span>
-                    前往 <a href="https://iterm2colorschemes.com" target="_blank" rel="noopener noreferrer" className="setup-link">iTerm2 Color Schemes</a>，个人推荐 <strong>Snazzy</strong> 或 <strong>Solarized Dark Higher Contrast</strong>。
+                    <span className="setup-step-tag">内置主题</span>
+                    macOS Terminal.app 自带多个配色方案：偏好设置 → 描述文件，选择 <strong>Pro</strong> 或 <strong>Novel</strong> 主题。
                   </div>
                   <div className="setup-guide-step">
-                    <span className="setup-step-tag">导入</span>
-                    在 iTerm2 设置 → <strong>Profiles</strong> → <strong>Colors</strong> → <strong>Color Presets</strong> 中导入下载的 <code className="inline-code">.itermcolors</code> 文件。
+                    <span className="setup-step-tag">流行配色</span>
+                    推荐配色方案：<br />
+                    • <strong>Solarized Dark</strong> - 经典护眼配色<br />
+                    • <strong>Dracula</strong> - 流行的暗色主题<br />
+                    • <strong>One Dark</strong> - Atom 编辑器同款<br />
+                    • <strong>Nord</strong> - 优雅的北欧风格<br />
+                    访问 <a href="https://github.com/lysyi3m/macos-terminal-themes" target="_blank" rel="noopener noreferrer" className="setup-link">macOS Terminal Themes</a> 获取更多主题。
+                  </div>
+                  <div className="setup-guide-step">
+                    <span className="setup-step-tag">Powerlevel10k 配置</span>
+                    运行 <code className="inline-code">p10k configure</code> 可以重新配置 Powerlevel10k 的样式，包括提示符样式、图标显示、颜色方案等。
                   </div>
                 </div>
               </div>
