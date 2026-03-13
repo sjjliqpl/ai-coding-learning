@@ -1044,6 +1044,7 @@
   color: var(--t2);
   line-height: 1.6;
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
   align-items: flex-start;
 }
