@@ -412,6 +412,15 @@ export default function GitPage() {
               <p>点击右上角 "+" → "New repository"，填写仓库名称，选择 Public（公开）或 Private（私有），点击创建。</p>
             </li>
             <li className="step-item">
+              <h4>在本地登录 GitHub（安装 GitHub CLI）</h4>
+              <p>访问 <a href="https://cli.github.com" target="_blank" rel="noreferrer">cli.github.com</a> 下载并安装 GitHub CLI 工具，然后在终端执行登录命令：</p>
+              <div className="code-box">
+                <div className="comment"># 安装完成后，执行以下命令登录 GitHub：</div>
+                <div className="cmd">gh auth login</div>
+                <div className="comment"># 按提示选择 GitHub.com，选择 HTTPS 协议，并通过浏览器或 Token 完成认证</div>
+              </div>
+            </li>
+            <li className="step-item">
               <h4>连接本地仓库</h4>
               <div className="code-box">
                 <div className="comment"># 在本地项目文件夹里执行：</div>
