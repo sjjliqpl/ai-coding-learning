@@ -155,7 +155,7 @@ export default function ModelsPage() {
               <div><span className="kw-blue">export</span> COPILOT_MODEL=<span className="string">"deepseek-chat"</span></div>
             </div>
             <p style={{ fontSize: '.85rem', marginTop: '.8rem', color: 'var(--text-secondary)' }}>
-              {t('支持 OpenAI 兼容格式，性价比极高。也可使用', 'OpenAI compatible format, great value. Also supports')} <code>deepseek-reasoner</code>{t('（R1 推理模型）。', ' (R1 reasoning model).')}
+              {t('支持 OpenAI 兼容格式，性价比极高。最新旗舰模型为', 'OpenAI compatible format, great value. Latest flagship:')} <code>deepseek-v4</code>{t('，也推荐', ', also recommended:')} <code>deepseek-chat</code> {t('（V3）和', ' (V3) and ')} <code>deepseek-reasoner</code>{t('（R1 推理模型）。', ' (R1 reasoning model).')}
             </p>
             <span className="skill-tag">{t('OpenAI 兼容', 'OpenAI Compatible')}</span>
           </div>
@@ -166,10 +166,10 @@ export default function ModelsPage() {
             <div className="code-box" style={{ fontSize: '.78rem' }}>
               <div><span className="kw-blue">export</span> COPILOT_PROVIDER_BASE_URL=<span className="string">"https://open.bigmodel.cn/api/paas/v4"</span></div>
               <div><span className="kw-blue">export</span> COPILOT_PROVIDER_API_KEY=<span className="string">"xxx"</span></div>
-              <div><span className="kw-blue">export</span> COPILOT_MODEL=<span className="string">"glm-4-plus"</span></div>
+              <div><span className="kw-blue">export</span> COPILOT_MODEL=<span className="string">"glm-5"</span></div>
             </div>
             <p style={{ fontSize: '.85rem', marginTop: '.8rem', color: 'var(--text-secondary)' }}>
-              {t('OpenAI 兼容格式，中文能力出色。推荐使用', 'OpenAI compatible format, excellent Chinese capability. Recommended:')} <code>glm-4-plus</code> {t('或', 'or')} <code>glm-4-flash</code>。
+              {t('OpenAI 兼容格式，中文能力出色。最新旗舰', 'OpenAI compatible format, excellent Chinese capability. Latest flagship:')} <code>glm-5</code>{t('（744B 参数 MoE），也推荐', ' (744B MoE), also recommended:')} <code>glm-4-plus</code>。
             </p>
             <span className="skill-tag">{t('OpenAI 兼容', 'OpenAI Compatible')}</span>
           </div>
@@ -180,10 +180,10 @@ export default function ModelsPage() {
             <div className="code-box" style={{ fontSize: '.78rem' }}>
               <div><span className="kw-blue">export</span> COPILOT_PROVIDER_BASE_URL=<span className="string">"https://dashscope.aliyuncs.com/compatible-mode/v1"</span></div>
               <div><span className="kw-blue">export</span> COPILOT_PROVIDER_API_KEY=<span className="string">"sk-xxx"</span></div>
-              <div><span className="kw-blue">export</span> COPILOT_MODEL=<span className="string">"qwen-plus"</span></div>
+              <div><span className="kw-blue">export</span> COPILOT_MODEL=<span className="string">"qwen3.7-max"</span></div>
             </div>
             <p style={{ fontSize: '.85rem', marginTop: '.8rem', color: 'var(--text-secondary)' }}>
-              {t('阿里云 DashScope 提供 <strong>兼容模式端点</strong>。可选', 'Alibaba Cloud DashScope provides <strong>compatible mode endpoint</strong>. Options:')} <code>qwen-turbo</code> / <code>qwen-plus</code> / <code>qwen-max</code>。
+              {t('阿里云 DashScope 提供 <strong>兼容模式端点</strong>。最新旗舰', 'Alibaba Cloud DashScope provides <strong>compatible mode endpoint</strong>. Latest flagship:')} <code>qwen3.7-max</code>{t('（1M 上下文），可选', ' (1M context), options:')} <code>qwen-plus</code> / <code>qwen-max</code>。
             </p>
             <span className="skill-tag">{t('OpenAI 兼容', 'OpenAI Compatible')}</span>
           </div>
@@ -194,10 +194,10 @@ export default function ModelsPage() {
             <div className="code-box" style={{ fontSize: '.78rem' }}>
               <div><span className="kw-blue">export</span> COPILOT_PROVIDER_BASE_URL=<span className="string">"https://api.moonshot.cn/v1"</span></div>
               <div><span className="kw-blue">export</span> COPILOT_PROVIDER_API_KEY=<span className="string">"sk-xxx"</span></div>
-              <div><span className="kw-blue">export</span> COPILOT_MODEL=<span className="string">"moonshot-v1-8k"</span></div>
+              <div><span className="kw-blue">export</span> COPILOT_MODEL=<span className="string">"kimi-k2.6"</span></div>
             </div>
             <p style={{ fontSize: '.85rem', marginTop: '.8rem', color: 'var(--text-secondary)' }}>
-              {t('OpenAI 兼容格式，超长上下文。可用', 'OpenAI compatible format, ultra-long context. Use')} <code>moonshot-v1-8k</code> / <code>moonshot-v1-32k</code> / <code>moonshot-v1-128k</code>。
+              {t('OpenAI 兼容格式，超长上下文。最新旗舰', 'OpenAI compatible format, ultra-long context. Latest flagship:')} <code>kimi-k2.6</code>{t('（1T MoE，256K 上下文，Agent Swarm），也支持', ' (1T MoE, 256K context, Agent Swarm), also supports:')} <code>moonshot-v1-128k</code>。
             </p>
             <span className="skill-tag">{t('OpenAI 兼容', 'OpenAI Compatible')}</span>
           </div>
@@ -208,10 +208,10 @@ export default function ModelsPage() {
             <div className="code-box" style={{ fontSize: '.78rem' }}>
               <div><span className="kw-blue">export</span> COPILOT_PROVIDER_BASE_URL=<span className="string">"https://api.minimax.chat/v1"</span></div>
               <div><span className="kw-blue">export</span> COPILOT_PROVIDER_API_KEY=<span className="string">"xxx"</span></div>
-              <div><span className="kw-blue">export</span> COPILOT_MODEL=<span className="string">"abab6.5s-chat"</span></div>
+              <div><span className="kw-blue">export</span> COPILOT_MODEL=<span className="string">"minimax-m3"</span></div>
             </div>
             <p style={{ fontSize: '.85rem', marginTop: '.8rem', color: 'var(--text-secondary)' }}>
-              {t('MiniMax ABAB 系列模型。推荐', 'MiniMax ABAB series models. Recommended:')} <code>abab6.5s-chat</code>{t('，响应速度快。', ', fast response speed.')}
+              {t('MiniMax 最新旗舰 M3 模型（1M 上下文，多模态）。推荐', 'MiniMax latest flagship M3 model (1M context, multimodal). Recommended:')} <code>minimax-m3</code>{t('，也支持', ', also supports:')} <code>abab6.5s-chat</code>。
             </p>
             <span className="skill-tag">{t('OpenAI 兼容', 'OpenAI Compatible')}</span>
           </div>
@@ -299,11 +299,11 @@ export default function ModelsPage() {
 
           <div className="skill-card" style={{ borderColor: 'rgba(238,108,77,0.3)' }}>
             <span className="skill-icon">🧠</span>
-            <h3>智谱 GLM via OpenRouter</h3>
+            <h3>GLM-5 via OpenRouter</h3>
             <div className="code-box" style={{ fontSize: '.78rem' }}>
               <div><span className="kw-blue">export</span> ANTHROPIC_BASE_URL=<span className="string">"https://openrouter.ai/api"</span></div>
               <div><span className="kw-blue">export</span> ANTHROPIC_API_KEY=<span className="string">"sk-or-v1-xxx"</span></div>
-              <div><span className="kw-blue">export</span> ANTHROPIC_MODEL=<span className="string">"zhipuai/glm-4-plus"</span></div>
+              <div><span className="kw-blue">export</span> ANTHROPIC_MODEL=<span className="string">"zhipuai/glm-5"</span></div>
             </div>
             <span className="skill-tag">OpenRouter</span>
           </div>
@@ -314,7 +314,7 @@ export default function ModelsPage() {
             <div className="code-box" style={{ fontSize: '.78rem' }}>
               <div><span className="kw-blue">export</span> ANTHROPIC_BASE_URL=<span className="string">"https://openrouter.ai/api"</span></div>
               <div><span className="kw-blue">export</span> ANTHROPIC_API_KEY=<span className="string">"sk-or-v1-xxx"</span></div>
-              <div><span className="kw-blue">export</span> ANTHROPIC_MODEL=<span className="string">"qwen/qwen-plus"</span></div>
+              <div><span className="kw-blue">export</span> ANTHROPIC_MODEL=<span className="string">"qwen/qwen3.7-max"</span></div>
             </div>
             <span className="skill-tag">OpenRouter</span>
           </div>
@@ -349,7 +349,7 @@ export default function ModelsPage() {
               <tbody>
                 <tr><td>{t('API 地址', 'API Address')}</td><td><code>https://api.deepseek.com/v1</code></td></tr>
                 <tr><td>{t('获取 Key', 'Get Key')}</td><td><a href="https://platform.deepseek.com" target="_blank" rel="noreferrer">platform.deepseek.com</a></td></tr>
-                <tr><td>{t('推荐模型', 'Recommended Model')}</td><td><code>deepseek-chat</code>{t('（通用）', ' (General)')} / <code>deepseek-reasoner</code>{t('（R1 推理）', ' (R1 Reasoning)')}</td></tr>
+                <tr><td>{t('推荐模型', 'Recommended Model')}</td><td><code>deepseek-v4</code>{t('（最新旗舰）', ' (Latest flagship)')} / <code>deepseek-chat</code>{t('（V3 通用）', ' (V3 General)')} / <code>deepseek-reasoner</code>{t('（R1 推理）', ' (R1 Reasoning)')}</td></tr>
                 <tr><td>{t('定价', 'Pricing')}</td><td>{t('¥1/百万输入 tokens，¥2/百万输出 tokens（极具竞争力）', '¥1/M input tokens, ¥2/M output tokens (extremely competitive)')}</td></tr>
                 <tr><td>{t('兼容格式', 'Compatible Format')}</td><td>OpenAI Chat Completions API</td></tr>
               </tbody>
@@ -394,7 +394,7 @@ export default function ModelsPage() {
               <tbody>
                 <tr><td>{t('API 地址', 'API Address')}</td><td><code>https://open.bigmodel.cn/api/paas/v4</code></td></tr>
                 <tr><td>{t('获取 Key', 'Get Key')}</td><td><a href="https://open.bigmodel.cn" target="_blank" rel="noreferrer">open.bigmodel.cn</a></td></tr>
-                <tr><td>{t('推荐模型', 'Recommended Model')}</td><td><code>glm-4-plus</code> / <code>glm-4-flash</code>{t('（快速版）', ' (Fast)')}</td></tr>
+                <tr><td>{t('推荐模型', 'Recommended Model')}</td><td><code>glm-5</code>{t('（最新旗舰 744B MoE）', ' (Latest flagship 744B MoE)')} / <code>glm-4-plus</code></td></tr>
                 <tr><td>{t('定价', 'Pricing')}</td><td>{t('新用户有免费额度，付费按量计费', 'Free quota for new users, pay-as-you-go pricing')}</td></tr>
                 <tr><td>{t('兼容格式', 'Compatible Format')}</td><td>OpenAI Chat Completions API</td></tr>
               </tbody>
@@ -435,7 +435,7 @@ export default function ModelsPage() {
               <tbody>
                 <tr><td>{t('API 地址', 'API Address')}</td><td><code>https://dashscope.aliyuncs.com/compatible-mode/v1</code>{t('（兼容模式）', ' (Compatible Mode)')}</td></tr>
                 <tr><td>{t('获取 Key', 'Get Key')}</td><td><a href="https://dashscope.console.aliyun.com" target="_blank" rel="noreferrer">dashscope.console.aliyun.com</a></td></tr>
-                <tr><td>{t('推荐模型', 'Recommended Model')}</td><td><code>qwen-plus</code> / <code>qwen-turbo</code> / <code>qwen-max</code></td></tr>
+                <tr><td>{t('推荐模型', 'Recommended Model')}</td><td><code>qwen3.7-max</code>{t('（最新旗舰 1M 上下文）', ' (Latest flagship 1M context)')} / <code>qwen-plus</code> / <code>qwen-max</code></td></tr>
                 <tr><td>{t('定价', 'Pricing')}</td><td>{t('按量计费，价格透明', 'Pay-as-you-go, transparent pricing')}</td></tr>
                 <tr><td>{t('兼容格式', 'Compatible Format')}</td><td>{t('OpenAI 兼容模式（DashScope Compatible Mode）', 'OpenAI Compatible Mode (DashScope Compatible Mode)')}</td></tr>
               </tbody>
@@ -475,7 +475,7 @@ export default function ModelsPage() {
               <tbody>
                 <tr><td>{t('API 地址', 'API Address')}</td><td><code>https://api.moonshot.cn/v1</code></td></tr>
                 <tr><td>{t('获取 Key', 'Get Key')}</td><td><a href="https://platform.moonshot.cn" target="_blank" rel="noreferrer">platform.moonshot.cn</a></td></tr>
-                <tr><td>{t('推荐模型', 'Recommended Model')}</td><td><code>moonshot-v1-8k</code> / <code>moonshot-v1-32k</code> / <code>moonshot-v1-128k</code></td></tr>
+                <tr><td>{t('推荐模型', 'Recommended Model')}</td><td><code>kimi-k2.6</code>{t('（最新旗舰 1T MoE）', ' (Latest flagship 1T MoE)')} / <code>moonshot-v1-128k</code></td></tr>
                 <tr><td>{t('定价', 'Pricing')}</td><td>{t('按 tokens 计费', 'Per-token pricing')}</td></tr>
                 <tr><td>{t('兼容格式', 'Compatible Format')}</td><td>OpenAI Chat Completions API</td></tr>
               </tbody>
@@ -515,7 +515,7 @@ export default function ModelsPage() {
               <tbody>
                 <tr><td>{t('API 地址', 'API Address')}</td><td><code>https://api.minimax.chat/v1</code></td></tr>
                 <tr><td>{t('获取 Key', 'Get Key')}</td><td><a href="https://platform.minimax.chat" target="_blank" rel="noreferrer">platform.minimax.chat</a></td></tr>
-                <tr><td>{t('推荐模型', 'Recommended Model')}</td><td><code>abab6.5s-chat</code></td></tr>
+                <tr><td>{t('推荐模型', 'Recommended Model')}</td><td><code>minimax-m3</code>{t('（最新旗舰 1M 上下文多模态）', ' (Latest flagship 1M context multimodal)')} / <code>abab6.5s-chat</code></td></tr>
                 <tr><td>{t('定价', 'Pricing')}</td><td>{t('按 tokens 计费', 'Per-token pricing')}</td></tr>
                 <tr><td>{t('兼容格式', 'Compatible Format')}</td><td>OpenAI Chat Completions API</td></tr>
               </tbody>
@@ -593,12 +593,12 @@ export default function ModelsPage() {
                 <tr><th>{t('国内模型', 'Chinese Model')}</th><th>OpenRouter {t('模型 ID', 'Model ID')}</th></tr>
               </thead>
               <tbody>
-                <tr><td>DeepSeek V3</td><td><code>deepseek/deepseek-chat</code></td></tr>
+                <tr><td>DeepSeek V4</td><td><code>deepseek/deepseek-chat</code></td></tr>
                 <tr><td>DeepSeek R1</td><td><code>deepseek/deepseek-r1</code></td></tr>
-                <tr><td>智谱 GLM-4</td><td><code>zhipuai/glm-4-plus</code></td></tr>
-                <tr><td>通义千问</td><td><code>qwen/qwen-plus</code></td></tr>
-                <tr><td>Kimi</td><td><code>moonshotai/moonshot-v1-8k</code></td></tr>
-                <tr><td>MiniMax</td><td><code>minimax/minimax-01</code></td></tr>
+                <tr><td>智谱 GLM-5</td><td><code>zhipuai/glm-5</code></td></tr>
+                <tr><td>通义千问 3.7</td><td><code>qwen/qwen3.7-max</code></td></tr>
+                <tr><td>Kimi K2.6</td><td><code>moonshotai/kimi-k2.6</code></td></tr>
+                <tr><td>MiniMax M3</td><td><code>minimax/minimax-m3</code></td></tr>
               </tbody>
             </table>
           </div>
@@ -672,12 +672,12 @@ export default function ModelsPage() {
             </thead>
             <tbody>
               <tr>
-                <td><strong>DeepSeek V3</strong></td>
+                <td><strong>DeepSeek V4</strong></td>
                 <td>DeepSeek</td>
                 <td>✅ OpenAI</td>
                 <td>128K</td>
                 <td>⭐⭐⭐⭐⭐</td>
-                <td>{t('性价比首选，通用编程', 'Best value, general coding')}</td>
+                <td>{t('最新旗舰，性价比首选', 'Latest flagship, best value')}</td>
               </tr>
               <tr>
                 <td><strong>DeepSeek R1</strong></td>
@@ -688,36 +688,36 @@ export default function ModelsPage() {
                 <td>{t('复杂推理、架构设计', 'Complex reasoning, architecture design')}</td>
               </tr>
               <tr>
-                <td><strong>GLM-4 Plus</strong></td>
+                <td><strong>GLM-5</strong></td>
                 <td>{t('智谱 AI', 'Zhipu AI')}</td>
                 <td>✅ OpenAI</td>
-                <td>128K</td>
-                <td>⭐⭐⭐</td>
-                <td>{t('中文理解、多模态', 'Chinese understanding, multimodal')}</td>
+                <td>200K</td>
+                <td>⭐⭐⭐⭐</td>
+                <td>{t('744B MoE、开源', '744B MoE, open-source')}</td>
               </tr>
               <tr>
-                <td><strong>Qwen Plus</strong></td>
+                <td><strong>Qwen 3.7 Max</strong></td>
                 <td>{t('阿里云', 'Alibaba Cloud')}</td>
                 <td>✅ {t('兼容模式', 'Compat Mode')}</td>
-                <td>131K</td>
+                <td>1M</td>
                 <td>⭐⭐⭐⭐</td>
-                <td>{t('中文生态、阿里云集成', 'Chinese ecosystem, Alibaba Cloud integration')}</td>
+                <td>{t('最新旗舰 Agent 模型', 'Latest flagship Agent model')}</td>
               </tr>
               <tr>
-                <td><strong>Kimi (128K)</strong></td>
+                <td><strong>Kimi K2.6</strong></td>
                 <td>Moonshot</td>
                 <td>✅ OpenAI</td>
-                <td>128K</td>
-                <td>⭐⭐⭐</td>
-                <td>{t('超长上下文、大型代码库', 'Ultra-long context, large codebases')}</td>
+                <td>256K</td>
+                <td>⭐⭐⭐⭐</td>
+                <td>{t('1T MoE Agent Swarm', '1T MoE Agent Swarm')}</td>
               </tr>
               <tr>
-                <td><strong>MiniMax ABAB</strong></td>
+                <td><strong>MiniMax M3</strong></td>
                 <td>MiniMax</td>
                 <td>✅ OpenAI</td>
-                <td>8K-128K</td>
-                <td>⭐⭐⭐</td>
-                <td>{t('快速响应、对话场景', 'Fast response, conversational scenarios')}</td>
+                <td>1M</td>
+                <td>⭐⭐⭐⭐</td>
+                <td>{t('1M 上下文多模态', '1M context multimodal')}</td>
               </tr>
             </tbody>
           </table>

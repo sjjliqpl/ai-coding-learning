@@ -135,7 +135,7 @@ export default function AdvancedPage() {
             </div>
             <div className="feature-item">
               <h4>{t('🧠 模型选择', '🧠 Model Selection')}</h4>
-              <p>{t('默认使用 Claude Sonnet 4.6，运行', 'Uses Claude Sonnet 4.6 by default. Run')} <code>/model</code> {t('可切换至其他模型（如 GPT-5.5、Claude Opus 4.5、Gemini 2.5 Pro）。', 'to switch to other models (e.g., GPT-5.5, Claude Opus 4.5, Gemini 2.5 Pro).')}</p>
+              <p>{t('默认使用 Claude Sonnet 4.6，运行', 'Uses Claude Sonnet 4.6 by default. Run')} <code>/model</code> {t('可切换至其他模型（如 GPT-5.5、Claude Opus 4.7、Gemini 2.5 Pro）。', 'to switch to other models (e.g., GPT-5.5, Claude Opus 4.7, Gemini 2.5 Pro).')}</p>
             </div>
             <div className="feature-item">
               <h4>{t('🔌 MCP 生态', '🔌 MCP Ecosystem')}</h4>
@@ -168,16 +168,17 @@ export default function AdvancedPage() {
       {/* CURSOR */}
       <section id="cursor" className="section">
         <h2><span className="icon">⚡</span> Cursor</h2>
-        <p>{t('当前体验最好的 AI 原生编辑器。它的 Rules 功能是让 AI 听话的关键。', 'Currently the best AI-native editor. Its Rules feature is the key to making AI behave.')}</p>
+        <p>{t('当前体验最好的 AI 原生编辑器，已升级至 Cursor 3.x 支持 Cloud Agents 和并行 Agent。它的 Rules 功能是让 AI 听话的关键。', 'Currently the best AI-native editor, now at Cursor 3.x with Cloud Agents and parallel agents. Its Rules feature is the key to making AI behave.')}</p>
 
         <div className="agent-detail">
           <div className="agent-header">
             <div className="agent-icon">⚡</div>
             <div>
-              <h3>Cursor</h3>
+              <h3>Cursor 3.x</h3>
               <div className="agent-tags">
                 <span className="tag">Editor</span>
-                <span className="tag">Composer</span>
+                <span className="tag">Composer 2.5</span>
+                <span className="tag">Cloud Agents</span>
                 <span className="tag">Rules</span>
               </div>
             </div>
@@ -191,7 +192,7 @@ export default function AdvancedPage() {
           <div className="code-box">
             <div className="code-title">{t('.cursorrules 示例', '.cursorrules Example')}</div>
             <span className="comment"># Tech Stack</span><br />
-            Framework: Next.js 14 (App Router)<br />
+            Framework: Next.js 16 (App Router)<br />
             Style: Tailwind CSS<br />
             State: Zustand<br /><br />
             <span className="comment"># Rules</span><br />

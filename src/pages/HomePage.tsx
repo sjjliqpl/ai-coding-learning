@@ -423,7 +423,7 @@ npm install react next
 }
 
 const tools = [
-  { icon: '⌨️', name: 'Cursor', type: 'AI 代码编辑器', bg: 'linear-gradient(135deg,#1a1a2e,#16213e)', desc: '最受欢迎的 AI 编程编辑器，内置 Claude 和 GPT 模型，适合所有水平的开发者。', descEn: 'The most popular AI coding editor, with built-in Claude and GPT models, suitable for all skill levels.' },
+  { icon: '⌨️', name: 'Cursor', type: 'AI 代码编辑器', bg: 'linear-gradient(135deg,#1a1a2e,#16213e)', desc: '最受欢迎的 AI 编程编辑器（已升级至 Cursor 3.x），内置 Claude 和 GPT 模型，支持 Cloud Agents 并行开发，适合所有水平的开发者。', descEn: 'The most popular AI coding editor (now at Cursor 3.x), with built-in Claude and GPT models, Cloud Agents for parallel development — suitable for all skill levels.' },
   { icon: '🧠', name: 'Claude', type: 'AI 大模型', bg: 'linear-gradient(135deg,#2d1b4e,#1a1025)', desc: 'Anthropic 出品，擅长长文本理解和代码生成，对中文支持出色。', descEn: 'By Anthropic — excels at long-text understanding and code generation, with excellent Chinese support.' },
   { icon: '🤖', name: 'ChatGPT', type: 'AI 大模型', bg: 'linear-gradient(135deg,#0d3b2e,#1a2e1a)', desc: 'OpenAI 出品，全球最知名的 AI 对话工具，编程能力强大。', descEn: 'By OpenAI — the world\'s most well-known AI chat tool with powerful coding capabilities.' },
   { icon: '✈️', name: 'GitHub Copilot', type: 'AI 编程助手', bg: 'linear-gradient(135deg,#1b2838,#0d1117)', desc: 'GitHub 官方出品，在 VS Code 中实时提示代码，像有一个结对编程伙伴。', descEn: 'Official from GitHub — real-time code suggestions in VS Code, like having a pair programming partner.' },
