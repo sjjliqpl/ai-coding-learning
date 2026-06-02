@@ -137,6 +137,27 @@ code{font-family:var(--font-mono)}
 }
 .back-btn:hover{color:var(--text-primary)}
 
+/* ============ LANGUAGE SWITCHER ============ */
+.lang-switcher{
+  position:fixed;top:1.2rem;right:2rem;z-index:200;
+  display:flex;align-items:center;gap:.15rem;
+  background:var(--glass);border:1px solid var(--glass-border);
+  border-radius:50px;padding:3px;
+  backdrop-filter:blur(10px);
+}
+.lang-btn{
+  width:32px;height:28px;border-radius:50px;border:none;
+  background:transparent;color:var(--text-dim);
+  font-size:.75rem;font-weight:600;cursor:pointer;
+  font-family:var(--font-body);
+  transition:all .25s ease;
+}
+.lang-btn:hover{color:var(--text-primary)}
+.lang-active{
+  background:rgba(240,165,0,0.15);color:var(--amber);
+}
+.lang-divider{color:var(--text-dim);font-size:.7rem;user-select:none}
+
 /* ============ MAIN CONTENT ============ */
 .main{
   flex:1;margin-left:260px;padding:4rem 6rem;

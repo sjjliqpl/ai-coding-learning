@@ -1,23 +1,27 @@
 import { useEffect, useState, useCallback } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
+import { useLang } from '../i18n/LanguageContext'
 
 export interface NavItem {
   id: string
   label: string
-  path?: string  // if set, navigate to this route instead of scrolling
+  labelEn?: string
+  path?: string
 }
 
 export interface NavGroup {
   title: string
+  titleEn?: string
   items: NavItem[]
 }
 
 export interface SidebarConfig {
   brandText: string
+  brandTextEn?: string
   brandGradient: string
   activeClass: string
   groups: NavGroup[]
-  backTo?: { label: string; path: string }
+  backTo?: { label: string; labelEn?: string; path: string }
 }
 
 interface Props {
@@ -28,6 +32,7 @@ export default function Sidebar({ config }: Props) {
   const [activeId, setActiveId] = useState('')
   const navigate = useNavigate()
   const location = useLocation()
+  const { lang } = useLang()
 
   const handleScroll = useCallback(() => {
     const sections = config.groups.flatMap(g => g.items).map(i => document.getElementById(i.id))
@@ -57,13 +62,13 @@ export default function Sidebar({ config }: Props) {
         onClick={() => navigate('/')}
       >
         {config.brandGradient === 'terminal-brand' ? (
-          <>{'>'} {config.brandText} <span>_</span></>
-        ) : config.brandText}
+          <>{'>'} {lang === 'en' && config.brandTextEn ? config.brandTextEn : config.brandText} <span>_</span></>
+        ) : (lang === 'en' && config.brandTextEn ? config.brandTextEn : config.brandText)}
       </span>
 
       {config.groups.map((group, gi) => (
         <div className="menu-group" key={gi}>
-          <div className="menu-title">{group.title}</div>
+          <div className="menu-title">{lang === 'en' && group.titleEn ? group.titleEn : group.title}</div>
           <ul className="menu-list">
             {group.items.map(item => (
               <li className="menu-item" key={item.id}>
@@ -72,7 +77,7 @@ export default function Sidebar({ config }: Props) {
                   data-nav={item.path ? 'true' : undefined}
                   onClick={() => item.path ? navigate(item.path) : scrollTo(item.id)}
                 >
-                  {item.label}
+                  {lang === 'en' && item.labelEn ? item.labelEn : item.label}
                 </span>
               </li>
             ))}
@@ -82,7 +87,7 @@ export default function Sidebar({ config }: Props) {
 
       {config.backTo && location.pathname !== '/' && (
         <div className="back-btn" onClick={() => navigate(config.backTo!.path)}>
-          ← {config.backTo.label}
+          ← {lang === 'en' && config.backTo!.labelEn ? config.backTo!.labelEn : config.backTo!.label}
         </div>
       )}
     </aside>
