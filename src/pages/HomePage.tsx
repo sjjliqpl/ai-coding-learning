@@ -11,8 +11,8 @@ import '../styles/home.css'
 const concepts = [
   { icon: '🤖', name: '模型 Model', en: 'Large Language Model', color: 'var(--amber)',
     brief: 'AI 的"大脑"，理解你说的话并生成代码。',
-    detail: '大语言模型（LLM）是经过海量文本训练的 AI 系统。<strong>常见模型</strong>有 GPT-4、Claude、Gemini 等。模型的能力决定了 AI 编程的质量。不同模型有不同特长：有的擅长写代码，有的擅长推理，有的速度更快。',
-    tags: [{ text: 'GPT-4', c: 'var(--teal)' }, { text: 'Claude', c: 'var(--coral)' }, { text: 'Gemini', c: 'var(--sky)' }] },
+    detail: '大语言模型（LLM）是经过海量文本训练的 AI 系统。<strong>常见模型</strong>有 GPT-5、Claude、Gemini、DeepSeek 等。模型的能力决定了 AI 编程的质量。不同模型有不同特长：有的擅长写代码，有的擅长推理，有的速度更快。',
+    tags: [{ text: 'GPT-5', c: 'var(--teal)' }, { text: 'Claude', c: 'var(--coral)' }, { text: 'DeepSeek', c: 'var(--sky)' }] },
   { icon: '🕵️', name: '智能体 Agent', en: 'AI Agent', color: 'var(--coral)',
     brief: '能自主执行任务的 AI，不只是回答问题。',
     detail: 'Agent 是一种<strong>能自主思考、规划和执行的 AI</strong>。它不只回答问题，还会主动分解任务、调用工具、查找资料、编写和测试代码。比如你说"帮我做一个网站"，Agent 会自动规划步骤、创建文件、写代码、测试、修复 Bug，整个过程自动完成。',
@@ -325,7 +325,7 @@ const tools = [
 const faqs = [
   { q: '完全不懂编程，真的能用 AI 做出产品吗？', a: '当然可以！AI 编程的核心就是<strong>用自然语言描述需求</strong>。你不需要记住任何代码语法，只要能清楚地表达"我想要什么"，AI 就能帮你实现。很多完全没有编程经验的人已经用 AI 做出了上线的产品。' },
   { q: 'AI 编程需要花多少钱？', a: '<strong>入门完全免费</strong>。Cursor 有免费额度，Claude/ChatGPT 也有免费版本。部署到 Vercel/Netlify 也有免费额度。当你的产品需要更多功能或流量时，才需要付费，通常每月 $20 左右。' },
-  { q: 'AI 写的代码质量怎么样？', a: '现代 AI（特别是 Claude 和 GPT-4）生成的代码质量已经<strong>相当不错</strong>，在很多场景下接近或达到中级开发者水平。对于个人项目和中小型产品完全够用。关键是学会好的提示词，让 AI 理解你的需求。' },
+  { q: 'AI 写的代码质量怎么样？', a: '现代 AI（特别是 Claude、GPT-5.5 和 DeepSeek）生成的代码质量已经<strong>相当不错</strong>，在很多场景下接近或达到中级开发者水平。对于个人项目和中小型产品完全够用。关键是学会好的提示词，让 AI 理解你的需求。' },
   { q: '用 AI 编程有什么局限性？', a: 'AI 编程主要的局限：<strong>1)</strong> 超大规模项目可能需要更多人工介入 <strong>2)</strong> 最新的技术框架 AI 可能还不熟悉 <strong>3)</strong> 高度定制化的性能优化仍需人工 <strong>4)</strong> AI 可能犯错，需要你检查验证。但对于 90% 的个人产品开发完全够用。' },
   { q: '学了 AI 编程，还需要学传统编程吗？', a: '<strong>不是必须的，但推荐逐步学习基础</strong>。理解编程基础（HTML/CSS/JS）能帮你更好地和 AI 沟通、更容易发现问题、做出更好的产品。但这不是前置条件，你可以边用 AI 边学，在实践中自然掌握。' },
   { q: '做出的产品可以商用吗？', a: '<strong>完全可以</strong>。AI 帮你写代码，代码的所有权归你。很多创业者用 AI 编程做出了商用产品。需要注意的是：使用的开源组件要遵守其许可证，API 调用要注意付费额度，用户数据要做好隐私保护。' },
@@ -389,6 +389,7 @@ const sidebarConfig: SidebarConfig = {
         { id: 'terminal', label: '💻 掌握终端', path: '/terminal' },
         { id: 'markdown', label: '📝 Markdown 入门', path: '/markdown' },
         { id: 'git', label: '🌿 Git & GitHub', path: '/git' },
+        { id: 'models', label: '🔌 接入第三方模型', path: '/models' },
       ]
     },
   ],

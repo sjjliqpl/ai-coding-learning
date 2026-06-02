@@ -6,6 +6,7 @@ import SkillsPage from './pages/SkillsPage'
 import TerminalPage from './pages/TerminalPage'
 import MarkdownPage from './pages/MarkdownPage'
 import GitPage from './pages/GitPage'
+import ModelsPage from './pages/ModelsPage'
 
 export default function App() {
   return (
@@ -17,6 +18,7 @@ export default function App() {
       <Route path="/terminal" element={<TerminalPage />} />
       <Route path="/markdown" element={<MarkdownPage />} />
       <Route path="/git" element={<GitPage />} />
+      <Route path="/models" element={<ModelsPage />} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   )

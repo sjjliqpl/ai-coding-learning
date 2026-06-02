@@ -54,7 +54,7 @@ export default function AdvancedPage() {
               <h3>Claude Code</h3>
               <div className="agent-tags">
                 <span className="tag">CLI</span>
-                <span className="tag">Claude 3.7 Sonnet</span>
+                <span className="tag">Claude Sonnet 4.5</span>
                 <span className="tag">重构专家</span>
               </div>
             </div>
@@ -97,7 +97,7 @@ export default function AdvancedPage() {
               <div className="agent-tags">
                 <span className="tag">Terminal</span>
                 <span className="tag">Agentic AI</span>
-                <span className="tag">Claude Sonnet</span>
+                <span className="tag">Claude Sonnet 4.6</span>
                 <span className="tag">MCP 支持</span>
               </div>
             </div>
@@ -129,7 +129,7 @@ export default function AdvancedPage() {
             </div>
             <div className="feature-item">
               <h4>🧠 模型选择</h4>
-              <p>默认使用 Claude Sonnet 4.5，运行 <code>/model</code> 可切换至其他模型（如 Claude Sonnet 4、GPT-5）。</p>
+              <p>默认使用 Claude Sonnet 4.6，运行 <code>/model</code> 可切换至其他模型（如 GPT-5.5、Claude Opus 4.5、Gemini 2.5 Pro）。</p>
             </div>
             <div className="feature-item">
               <h4>🔌 MCP 生态</h4>
@@ -234,7 +234,7 @@ export default function AdvancedPage() {
         <div className="feature-grid">
           <div className="agent-detail" style={{ margin: 0 }}>
             <h3>🔍 交叉审查 (Cross-Check)</h3>
-            <p>不要相信单一模型。用 Claude 写完代码，用 GPT-4 Review 一遍。</p>
+            <p>不要相信单一模型。用 Claude 写完代码，用 GPT-5.5 或 Gemini 再 Review 一遍。</p>
             <div className="code-box">
               Prompt: "请作为一名资深工程师 Review 这段代码，重点检查：1. 潜在的内存泄漏 2. 错误处理是否完整 3. 变量命名是否清晰。"
             </div>

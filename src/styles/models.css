@@ -1,0 +1,82 @@
+/* ============ MODELS PAGE STYLES ============ */
+
+/* Highlight box - coral theme */
+.highlight-coral {
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin: 1.5rem 0;
+  background: rgba(238, 108, 77, 0.08);
+  border: 1px solid rgba(238, 108, 77, 0.2);
+}
+
+.highlight-coral p {
+  color: var(--text-primary);
+  line-height: 1.8;
+}
+
+.highlight-coral code {
+  background: rgba(238, 108, 77, 0.15);
+  padding: .15rem .4rem;
+  border-radius: 4px;
+  font-size: .85rem;
+}
+
+/* Environment variable table */
+.env-table-wrapper {
+  overflow-x: auto;
+  margin: 1.5rem 0;
+}
+
+.env-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .9rem;
+}
+
+.env-table thead th {
+  text-align: left;
+  padding: .8rem 1rem;
+  background: var(--glass);
+  border-bottom: 1px solid var(--glass-border);
+  font-family: var(--font-mono);
+  font-size: .75rem;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  color: var(--text-dim);
+}
+
+.env-table tbody td {
+  padding: .8rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  color: var(--text-secondary);
+  vertical-align: top;
+}
+
+.env-table tbody td:first-child {
+  color: var(--text-primary);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.env-table tbody code {
+  background: rgba(255, 255, 255, 0.06);
+  padding: .15rem .5rem;
+  border-radius: 4px;
+  font-size: .82rem;
+  color: var(--amber);
+}
+
+.env-table tbody a {
+  color: var(--amber);
+}
+
+.env-table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* Model cards within skill-grid */
+.skill-card .code-box {
+  margin: 0;
+  font-size: .78rem;
+  padding: .8rem;
+}
